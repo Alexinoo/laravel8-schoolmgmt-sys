@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +19,13 @@ Route::get('/', function () {
 });
 
 Route::middleware([
-    'auth:sanctum',  config('jetstream.auth_session'),
-    'verified'
+    'auth:sanctum',  config('jetstream.auth_session'),  'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-
         // return view('dashboard'); //Default
-
         return view('Admin.dashboard'); //Customized
-
     })->name('dashboard');
 });
+
+
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
