@@ -112,7 +112,13 @@
 				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
 				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
 				 <div class="dropdown-divider"></div>
-				 <a class="dropdown-item" href="#"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+				 <a class="dropdown-item" href="{{ route('logout')}}"
+				  onclick="event.preventDefault(); document.getElementById('logout-form').submit()"
+				 >
+					<i class="ti-lock text-muted mr-2"></i> Logout</a>
+					 <form action="{{ route('logout')}}" id="logout-form" method="POST" class="d-none">
+                    @csrf
+                    </form>
 			  </li>
 			</ul>
           </li>	
