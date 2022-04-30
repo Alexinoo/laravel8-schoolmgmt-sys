@@ -16,6 +16,9 @@
 	<!-- Style-->  
 	<link rel="stylesheet" href="{{ asset('backend/css/style.css')}}">
 	<link rel="stylesheet" href="{{ asset('backend/css/skin_color.css')}}">
+
+  {{-- Toastr -css --}}
+	<link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css')}}">
      
   </head>
 
@@ -48,12 +51,34 @@
     {{-- Datatables --}}
 <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
 	<script src="{{asset('backend/js/pages/data-table.js')}}"></script>
+
+  {{-- Toastr --}}
+  <script src="{{ asset('backend/js/toastr.min.js') }}"></script>
 	
 	<!-- Sunny Admin App -->
 	<script src="{{ asset('backend/js/template.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
 
-
+ {{-- @yield('scripts') --}}
+     <script>
+       @if(Session::has('message'))
+       let type = "{{ Session::get('alert-type' , 'info')}}"
+       switch (type) {
+         case 'info':
+           toastr.info("{{ Session::get('message')}}");
+           break;
+         case 'success':
+           toastr.success("{{ Session::get('message')}}");
+           break;
+         case 'warning':
+           toastr.warning("{{ Session::get('message')}}");
+           break;
+         case 'error':
+           toastr.error("{{ Session::get('message')}}");
+           break;              
+       }
+       @endif
+     </script>
 		
 	
 </body>
