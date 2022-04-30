@@ -24,20 +24,29 @@
 						<thead>
 							<tr>
                                 <th>ID</th>
+                                <th>Role</th>
 								<th>Name</th>
 								<th>Email</th>
 								<th>Profile photo</th>								
+								<th>Action</th>								
 							</tr>
 						</thead>
 						<tbody>
-                            @php($i = 1)
                             @foreach($users as $key => $value)
 
                             	<tr>
-                                <td>{{$i++}}</td>
+                                <td>{{$key+1}}</td>
+                                <td></td>
 								<td>{{ $value->name}}</td>
 								<td>{{ $value->email}}</td>
 								<td><img src="{{url('storage/'.$value->profile_photo_path)}}" alt="Profile" style="width: 50px;height:50px"/></td>
+                                <td>
+                                    <div class="text-center">
+                                    <a href="" class="btn btn-circle btn-info btn-xs"><i class="fa fa-eye"></i></a>
+
+                                    <a href="" class="btn btn-circle btn-danger btn-xs ml-3"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </td>
 								
 							</tr>
                                 
