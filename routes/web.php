@@ -38,4 +38,5 @@ Route::prefix('users')->group(function () {
 
     Route::get('index', [UserController::class, 'index'])->name('view.users');
     Route::get('create', [UserController::class, 'create'])->name('add.user');
+    Route::post('store', [UserController::class, 'store'])->name('store.user');
 });
