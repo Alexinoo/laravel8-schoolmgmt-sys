@@ -44,7 +44,7 @@
                                     <div class="text-center">
                                     <a href="{{route('edit.user',$value->id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-eye"></i></a>
 
-                                    <a href="" class="btn btn-circle btn-danger btn-xs ml-3"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('delete.user',$value->id) }}" class="btn btn-circle btn-danger btn-xs ml-3"><i class="fa fa-trash"></i></a>
                                     </div>
                                 </td>
 								
