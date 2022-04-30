@@ -42,9 +42,9 @@
 								<td><img src="{{url('storage/'.$value->profile_photo_path)}}" alt="Profile" style="width: 50px;height:50px"/></td>
                                 <td>
                                     <div class="text-center">
-                                    <a href="{{route('edit.user',$value->id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-eye"></i></a>
+                                    <a href="{{route('edit.user',$value->id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
-                                    <a href="{{ route('delete.user',$value->id) }}" class="btn btn-circle btn-danger btn-xs ml-3"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('delete.user',$value->id) }}" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
                                     </div>
                                 </td>
 								
