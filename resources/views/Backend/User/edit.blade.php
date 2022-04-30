@@ -11,14 +11,14 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add User</h4>
+			  <h4 class="box-title">Update User</h4>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
 					<form action="{{route('update.user' ,$user->id)}}" method="POST">
-                     @csrf
+            @csrf
 					  <div class="row">
 						<div class="col-12">	
 
@@ -29,7 +29,7 @@
                                         <h5>User Role <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <select name="user_type" id="user_type" required class="form-control">
-                                                <option value="" selected disabled >-Select role-</option>
+                                                <option value="" selected="" disabled="" >-Select role-</option>
                                                 <option value="0"  {{ $user->user_type == 0 ? 'selected' : '' }}>User</option>
                                                 <option value="1"  {{ $user->user_type == 1 ? 'selected' : '' }}>Admin</option>                                              
                                             </select>
@@ -69,7 +69,7 @@
                             {{-- End of row 2--}}						
                             
 						<div class="text-xs-right">
-							<input type="submit" class="btn btn-rounded btn-info mb-5"value="Submit">
+							<input type="submit" class="btn btn-rounded btn-info mb-5"value="Update">
 						</div>
 					</form>
 
