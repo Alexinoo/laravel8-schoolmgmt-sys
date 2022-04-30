@@ -25,7 +25,6 @@ class UserController extends Controller
             'name' => 'required',
             'email' => ['required', 'email', 'unique:users'],
         ]);
-
         $user = new User;
         $user->user_type = $request->user_type;
         $user->name = $request->name;
@@ -37,6 +36,33 @@ class UserController extends Controller
             'alert-type' => 'success'
         );
 
+        $user->save();
+
+        return redirect()->route('view.users')->with($notification);
+    }
+
+    public function edit($id)
+    {
+        $user  = User::find($id);
+        return view('Backend.User.edit', compact('user'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => ['required', 'email', 'unique:users'],
+        ]);
+        $user =  User::find($id);
+        $user->user_type = $request->user_type;
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        $notification = array(
+            'message' => 'User Updated Successfully',
+            'alert-type' => 'info'
+        );
         $user->save();
 
         return redirect()->route('view.users')->with($notification);
