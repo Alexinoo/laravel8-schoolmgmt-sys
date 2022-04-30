@@ -13,4 +13,9 @@ class UserController extends Controller
         $users['users'] = User::all();
         return view('Backend.User.index', $users);
     }
+    public function create()
+    {
+
+        return view('Backend.User.create');
+    }
 }
