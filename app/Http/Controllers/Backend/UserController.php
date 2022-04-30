@@ -63,7 +63,21 @@ class UserController extends Controller
             'message' => 'User Updated Successfully',
             'alert-type' => 'info'
         );
-        $user->save();
+        $user->update();
+
+        return redirect()->route('view.users')->with($notification);
+    }
+
+    public function destroy($id)
+    {
+        $user  = User::find($id);
+
+        $user->delete();
+
+        $notification = array(
+            'message' => 'User Delete Successfully',
+            'alert-type' => 'error'
+        );
 
         return redirect()->route('view.users')->with($notification);
     }
