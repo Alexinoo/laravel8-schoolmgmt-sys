@@ -36,7 +36,7 @@
 
                             	<tr>
                                 <td>{{$key+1}}</td>
-                                <td></td>
+                                <td>{{ ($value->user_type == 0) ? 'user' : 'Admin' }}</td>
 								<td>{{ $value->name}}</td>
 								<td>{{ $value->email}}</td>
 								<td><img src="{{url('storage/'.$value->profile_photo_path)}}" alt="Profile" style="width: 50px;height:50px"/></td>
