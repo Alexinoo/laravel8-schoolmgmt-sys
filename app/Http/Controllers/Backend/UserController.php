@@ -30,13 +30,14 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->save();
 
         $notification = array(
             'message' => 'User Added Successfully',
             'alert-type' => 'success'
         );
 
-        $user->save();
+
 
         return redirect()->route('view.users')->with($notification);
     }
@@ -44,6 +45,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user  = User::find($id);
+
         return view('Backend.User.edit', compact('user'));
     }
 
@@ -55,15 +57,15 @@ class UserController extends Controller
             'email' => ['required', 'email', 'unique:users'],
         ]);
         $user =  User::find($id);
-        $user->user_type = $request->user_type;
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user->user_type = $request->input('user_type');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
 
         $notification = array(
             'message' => 'User Updated Successfully',
             'alert-type' => 'info'
         );
-        $user->update();
 
         return redirect()->route('view.users')->with($notification);
     }
