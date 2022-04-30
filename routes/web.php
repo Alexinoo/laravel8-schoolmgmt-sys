@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,11 @@ Route::middleware([
 
 
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+
+// User Management
+
+Route::prefix('users')->group(function () {
+
+    Route::get('index', [UserController::class, 'index'])->name('user.view');
+});
