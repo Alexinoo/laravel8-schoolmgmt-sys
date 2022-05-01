@@ -26,7 +26,7 @@ class ExamTypeController extends Controller
      */
     public function create()
     {
-        return view('Backend.Setup.exam_type.create');
+        return view('Backend.Setup.Exam_type.create');
     }
 
     /**
