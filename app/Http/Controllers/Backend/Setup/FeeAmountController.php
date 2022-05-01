@@ -85,9 +85,17 @@ class FeeAmountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($fee_category_id)
     {
-        //
+        // Filter by fee_category_id
+        $data  = FeeAmount::where('fee_category_id', $fee_category_id)
+            ->orderBy('class_id', 'ASC')
+            ->get();
+        $fee_categories = FeeCategory::all();
+
+        $classes = StudentClass::all();
+
+        return view('Backend.Setup.Fee_amount.edit', compact('data', 'fee_categories', 'classes'));
     }
 
     /**
@@ -97,9 +105,38 @@ class FeeAmountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $fee_category_id)
     {
-        //
+        if ($request->class_id == null) {
+            $notification = array(
+                'message' => 'Sorry, You did not select any class amount',
+                'alert-type' => 'error'
+            );
+
+            return redirect()->route('fee_category_amount.edit', $fee_category_id)->with($notification);
+        } else {
+
+            $countClass = count($request->class_id);
+
+            // Delete selected
+            FeeAmount::where('fee_category_id', $fee_category_id)->delete();
+
+            //  Then re-upload afresh
+            for ($i = 0; $i < $countClass; $i++) {
+
+                $fee_amount = new FeeAmount();
+                $fee_amount->fee_category_id = $request->fee_category_id;
+                $fee_amount->class_id = $request->class_id[$i];
+                $fee_amount->amount = $request->amount[$i];
+                $fee_amount->save();
+            }
+        }
+        $notification = array(
+            'message' => 'Data Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('fee_category_amount.index')->with($notification);
     }
 
     /**
