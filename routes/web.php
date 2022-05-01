@@ -47,4 +47,6 @@ Route::prefix('users')->group(function () {
 // Profile Management
 Route::prefix('profile')->group(function () {
     Route::get('index', [ProfileController::class, 'index'])->name('view.profile');
+    Route::get('edit', [ProfileController::class, 'edit'])->name('edit.profile');
+    Route::post('store', [ProfileController::class, 'store'])->name('store.profile');
 });
