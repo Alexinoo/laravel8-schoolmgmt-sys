@@ -7,6 +7,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+
+use function PHPSTORM_META\type;
 
 class ProfileController extends Controller
 {
@@ -70,7 +73,42 @@ class ProfileController extends Controller
         );
 
         return redirect()->route('view.profile')->with($notification);
+    }
 
-        return view('Backend.Profile.edit', compact('user'));
+    // Password view
+    public function view_password()
+    {
+        return view('Backend.Password.edit_password');
+    }
+
+    // Update password
+    public function update_password(Request $request)
+    {
+        $validated = $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+
+        $vHashedPassword = Auth::user()->password;
+
+        if (Hash::check($request->current_password,  $vHashedPassword)) {
+
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            // Destroy session /logout
+            Auth::logout();
+
+            $notification = array(
+                'message' => 'Password changed successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('login')->with($notification);
+        } else {
+
+            return redirect()->back()->with('error', 'Current Password is invalid');
+        }
     }
 }
