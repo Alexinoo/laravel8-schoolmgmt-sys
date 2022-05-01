@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
@@ -95,4 +96,13 @@ Route::prefix('setups')->group(function () {
     Route::get('student-shift/edit/{id}', [StudentShiftController::class, 'edit'])->name('student_shift.edit');
     Route::post('student-shift/update/{id}', [StudentShiftController::class, 'update'])->name('student_shift.update');
     Route::get('student-shift/delete/{id}', [StudentShiftController::class, 'destroy'])->name('student_shift.delete');
+
+
+    // Fee Category
+    Route::get('fee-category/index', [FeeCategoryController::class, 'index'])->name('fee_category.index');
+    Route::get('fee-category/create', [FeeCategoryController::class, 'create'])->name('fee_category.create');
+    Route::post('fee-category/store', [FeeCategoryController::class, 'store'])->name('fee_category.store');
+    Route::get('fee-category/edit/{id}', [FeeCategoryController::class, 'edit'])->name('fee_category.edit');
+    Route::post('fee-category/update/{id}', [FeeCategoryController::class, 'update'])->name('fee_category.update');
+    Route::get('fee-category/delete/{id}', [FeeCategoryController::class, 'destroy'])->name('fee_category.delete');
 });
