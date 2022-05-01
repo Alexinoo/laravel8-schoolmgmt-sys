@@ -38,7 +38,7 @@ class StudentYearController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => ['required', 'unique:student_years,name']
+            'name' => ['required', 'unique:student_years,name', 'min:4', 'max:4']
         ]);
         $user = new StudentYear();
         $user->name = $request->name;
