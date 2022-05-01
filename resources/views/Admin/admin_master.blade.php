@@ -121,7 +121,7 @@ $(function() {
 })
 </script>
 		
-	@yield('script')
+	@yield('scripts')
   
 </body>
 </html>
