@@ -68,6 +68,7 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('student_class.index') }}"><i class="ti-more"></i>Student class</a></li>
             <li><a href="{{ route('student_year.index') }}"><i class="ti-more"></i>Student year</a></li>
+            <li><a href="{{ route('student_group.index') }}"><i class="ti-more"></i>Student group</a></li>
         
           </ul>
         </li>
