@@ -108,7 +108,12 @@ class ProfileController extends Controller
             return redirect()->route('login')->with($notification);
         } else {
 
-            return redirect()->back()->with('error', 'Current Password is invalid');
+            $notification = array(
+                'message' => 'Current Password is invalid',
+                'alert-type' => 'error'
+            );
+
+            return redirect()->back()->with($notification);
         }
     }
 }
