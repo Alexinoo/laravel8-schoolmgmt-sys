@@ -93,7 +93,7 @@ class StudentGroupController extends Controller
         $user->save();
 
         $notification = array(
-            'message' => 'Student group Added Successfully',
+            'message' => 'Student group updated Successfully',
             'alert-type' => 'success'
         );
 

@@ -93,7 +93,7 @@ class StudentShiftController extends Controller
         $user->save();
 
         $notification = array(
-            'message' => 'Student shift Added Successfully',
+            'message' => 'Student shift updated Successfully',
             'alert-type' => 'success'
         );
 
