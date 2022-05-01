@@ -52,15 +52,12 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'email' => ['required', 'email', 'unique:users'],
-        ]);
+
         $user =  User::find($id);
         $user->user_type = $request->input('user_type');
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->save();
+        $user->update();
 
         $notification = array(
             'message' => 'User Updated Successfully',
