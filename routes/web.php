@@ -49,4 +49,8 @@ Route::prefix('profile')->group(function () {
     Route::get('index', [ProfileController::class, 'index'])->name('view.profile');
     Route::get('edit', [ProfileController::class, 'edit'])->name('edit.profile');
     Route::post('store', [ProfileController::class, 'store'])->name('store.profile');
+
+    // Password
+    Route::get('password/view', [ProfileController::class, 'view_password'])->name('view.password');
+    Route::post('password/update', [ProfileController::class, 'update_password'])->name('update.password');
 });
