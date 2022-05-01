@@ -74,9 +74,14 @@ class FeeAmountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($fee_category_id)
     {
-        //
+        // Filter by fee_category_id
+        $data  = FeeAmount::where('fee_category_id', $fee_category_id)
+            ->orderBy('class_id', 'ASC')
+            ->get();
+
+        return view('Backend.Setup.Fee_amount.show', compact('data'));
     }
 
     /**
