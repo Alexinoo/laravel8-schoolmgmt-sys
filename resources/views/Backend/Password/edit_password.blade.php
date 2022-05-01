@@ -24,7 +24,7 @@
                                     <div class="form-group">
                                         <h5>Current Password  <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="password" name="current_password" class="form-control" required />
+                                            <input type="password" name="current_password" class="form-control"/>
                                              @error('current_password')
                                                 <span class="text-danger">{{ $message}}</span>
                                             @enderror                                        
@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <h5>New Password<span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="password" name="password" class="form-control" required />
+                                            <input type="password" name="password" class="form-control" />
                                              @error('password')
                                                 <span class="text-danger">{{ $message}}</span>
                                             @enderror
@@ -45,7 +45,7 @@
                                     <div class="form-group">
                                         <h5>Confirm Password<span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="password" name="password_confirmation" class="form-control" required />
+                                            <input type="password" name="password_confirmation" class="form-control" />
                                         @error('password_confirmation')
                                             <span class="text-danger">{{ $message}}</span>
                                         @enderror
