@@ -48,6 +48,10 @@
 	<script src="{{ asset('assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
 	<script src="{{ asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
 
+  {{-- Jquery CDN --}}
+    <script src="{{ asset('backend/js/jquery-3.6.0.min.js') }}"></script>
+
+
     {{-- Datatables --}}
 <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
 	<script src="{{asset('backend/js/pages/data-table.js')}}"></script>
@@ -117,6 +121,7 @@ $(function() {
 })
 </script>
 		
-	
+	@yield('script')
+  
 </body>
 </html>
