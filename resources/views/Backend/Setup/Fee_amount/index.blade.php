@@ -36,9 +36,9 @@
 								<td>{{ $value->fee_category->name}}</td>
                                 <td>
                                     <div class="text-center">
-                                    <a href="" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ route('fee_category_amount.edit',$value->fee_category_id) }}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
-                                    <a href="" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('fee_category_amount.delete',$value->fee_category_id) }}" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
                                     </div>
                                 </td>
 								
