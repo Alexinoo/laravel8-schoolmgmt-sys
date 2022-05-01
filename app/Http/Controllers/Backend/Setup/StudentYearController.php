@@ -86,7 +86,7 @@ class StudentYearController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'name' => ['required', 'unique:student_years,name']
+            'name' => ['required', 'unique:student_years,name', 'min:4', 'max:4']
         ]);
         $user = StudentYear::find($id);
         $user->name = $request->name;
