@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
+use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
@@ -142,7 +143,6 @@ Route::prefix('setups')->group(function () {
     Route::get('school-subject/delete/{id}', [SchoolSubjectController::class, 'destroy'])->name('school_subject.delete');
 
 
-
     // Assign subject
     Route::get('assign-subject/index', [AssignSubjectController::class, 'index'])->name('assign_subject.index');
     Route::get('assign-subject/create', [AssignSubjectController::class, 'create'])->name('assign_subject.create');
@@ -154,4 +154,16 @@ Route::prefix('setups')->group(function () {
     Route::get('assign-subject/edit/{class_id}', [AssignSubjectController::class, 'edit'])->name('assign_subject.edit');
     Route::post('assign-subject/update/{class_id}', [AssignSubjectController::class, 'update'])->name('assign_subject.update');
     Route::get('assign-subject/delete/{id}', [AssignSubjectController::class, 'destroy'])->name('assign_subject.delete');
+
+    // Designation
+    Route::get('designation/index', [DesignationController::class, 'index'])->name('designation.index');
+    Route::get('designation/create', [DesignationController::class, 'create'])->name('designation.create');
+
+    Route::post('designation/store', [DesignationController::class, 'store'])->name('designation.store');
+
+    Route::get('designation/show/{id}', [DesignationController::class, 'show'])->name('designation.show');
+
+    Route::get('designation/edit/{id}', [DesignationController::class, 'edit'])->name('designation.edit');
+    Route::post('designation/update/{id}', [DesignationController::class, 'update'])->name('designation.update');
+    Route::get('designation/delete/{id}', [DesignationController::class, 'destroy'])->name('designation.delete');
 });
