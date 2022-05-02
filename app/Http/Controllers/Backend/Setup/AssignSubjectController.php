@@ -85,9 +85,14 @@ class AssignSubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($class_id)
     {
-        //
+        // Filter by class_id
+        $data  = AssignSubject::where('class_id', $class_id)
+            ->orderBy('subject_id', 'ASC')
+            ->get();
+
+        return view('Backend.Setup.Assign_subject.show', compact('data'));
     }
 
     /**
