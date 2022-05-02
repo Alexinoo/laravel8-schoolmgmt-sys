@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users['users'] = User::all();
+        $users['users'] = User::where('user_type', 1)->get();
         return view('Backend.User.index', $users);
     }
     public function create()
@@ -26,10 +26,13 @@ class UserController extends Controller
             'email' => ['required', 'email', 'unique:users'],
         ]);
         $user = new User;
-        $user->user_type = $request->user_type;
+        $code = rand(0000, 9999);
+        $user->user_type = 1;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->role = $request->role;
+        $user->password = bcrypt($code);
+        $user->code = $code;
         $user->save();
 
         $notification = array(
@@ -54,9 +57,9 @@ class UserController extends Controller
     {
 
         $user =  User::find($id);
-        $user->user_type = $request->input('user_type');
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->role = $request->input('role');
         $user->update();
 
         $notification = array(
