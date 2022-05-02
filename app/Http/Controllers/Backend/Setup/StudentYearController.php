@@ -40,9 +40,9 @@ class StudentYearController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:student_years,name', 'min:4', 'max:4']
         ]);
-        $user = new StudentYear();
-        $user->name = $request->name;
-        $user->save();
+        $model = new StudentYear();
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Student year Added Successfully',
@@ -88,9 +88,9 @@ class StudentYearController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:student_years,name', 'min:4', 'max:4']
         ]);
-        $user = StudentYear::find($id);
-        $user->name = $request->name;
-        $user->update();
+        $model = StudentYear::find($id);
+        $model->name = $request->name;
+        $model->update();
 
         $notification = array(
             'message' => 'Student year Updated Successfully',
@@ -108,8 +108,8 @@ class StudentYearController extends Controller
      */
     public function destroy($id)
     {
-        $user = StudentYear::find($id);
-        $user->delete();
+        $model = StudentYear::find($id);
+        $model->delete();
 
         $notification = array(
             'message' => 'Student year deleted Successfully',
