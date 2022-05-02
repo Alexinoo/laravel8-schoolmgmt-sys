@@ -69,6 +69,7 @@
 							<tr>
                                 <th style="width: 25px">ID</th>
 								<th>Name</th>				
+								<th>Reg no</th>				
 								<th>Roll</th>				
 								<th>Year</th>				
 								<th>Class</th>				
@@ -85,11 +86,12 @@
                             	<tr>
                                 <td>{{$key+1}}</td>
 								<td>{{ $value->user->name}}</td>
+								<td>{{ $value->user->id_no}}</td>
 								<td></td>
 								<td>{{ $value->year->name}}</td>
 								<td>{{ $value->class->name}}</td>
 								<td>
-									<img src="{{ asset('uploads/student_images/'.$value->user->image)}}" alt="Image" style="width: 50px;height:50px;">
+									<img src="{{ asset('uploads/student_images/'.$value->user->image)}}" alt="Image" style="width: 50px;height:50px;border:1px solid #f15025;">
 								</td>
 								<td>{{ $value->user->code}}</td>
                                 <td>
