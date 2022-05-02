@@ -23,11 +23,15 @@ class StudentRegistrationController extends Controller
      */
     public function index()
     {
-        $model = StudentRegistration::all();
         $years = StudentYear::all();
         $classes = StudentClass::all();
 
-        return view('Backend.Student.Student_registration.index', compact('model', 'years', 'classes'));
+        // search by year/class
+        $year_id = StudentYear::orderBy('id', 'DESC')->first()->id; //5
+        $class_id = StudentClass::orderBy('id', 'DESC')->first()->id; //8
+        $model = StudentRegistration::where('year_id', $year_id)->where('class_id', $class_id)->get();
+
+        return view('Backend.Student.Student_registration.index', compact('model', 'years', 'classes', 'year_id', 'class_id'));
     }
 
     /**
