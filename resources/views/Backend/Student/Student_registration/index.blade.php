@@ -17,7 +17,7 @@
 				  </div>
 
 				  <div class="box-body">
-					<form action="" method="">
+					<form action="{{ route('search_by_year_class_wise') }}" method="GET">
 						<div class="row">
 							      <div class="col-md-4">
                                      <div class="form-group">
@@ -64,6 +64,7 @@
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="table-responsive">
+					@if(!@search)
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -91,14 +92,17 @@
 								<td>{{ $value->year->name}}</td>
 								<td>{{ $value->class->name}}</td>
 								<td>
-									<img src="{{ asset('uploads/student_images/'.$value->user->image)}}" alt="Image" style="width: 60px;height:60px;border:1px solid #f15025;">
+									  <img src={{ !empty($value->user->image)? asset('uploads/student_images/'.$value->user->image)
+                                            :asset('uploads/no_image.jpg')
+                                            }}
+                                             id = "showImage" alt="" style="width:80px;height:80px;border:1px solid #f15025" />
 								</td>
 								<td>{{ $value->user->code}}</td>
                                 <td>
                                     <div class="text-center">
-                                    <a href="{{route('student_registration.edit',$value->id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{route('student_registration.edit',$value->student_id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
-                                    <a href="{{ route('student_registration.delete',$value->id) }}" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('student_registration.delete',$value->student_id) }}" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
                                     </div>
                                 </td>
 								
@@ -111,6 +115,59 @@
 						
 						</tfoot>
 					  </table>
+					  @else
+					   <table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+                                <th style="width: 25px">ID</th>
+								<th>Name</th>				
+								<th>Reg no</th>				
+								<th>Roll</th>				
+								<th>Year</th>				
+								<th>Class</th>				
+								<th>Image</th>	
+								@if(Auth::user()->role == 'Admin')			
+								<th>Code</th>		
+								@endif		
+								<th class="text-center">Action</th>								
+							</tr>
+						</thead>
+						<tbody>
+                            @foreach($model as $key => $value)
+
+                            	<tr>
+                                <td>{{$key+1}}</td>
+								<td>{{ $value->user->name}}</td>
+								<td>{{ $value->user->id_no}}</td>
+								<td>{{ $value->roll}}</td>
+								<td>{{ $value->year->name}}</td>
+								<td>{{ $value->class->name}}</td>
+								<td>
+									  <img src=
+									  {{ !empty($value->user->image)? asset('uploads/student_images/'.$value->user->image) : asset('uploads/no_image.jpg')
+                                            }}
+                                             id = "showImage" alt="" style="width:80px;height:80px;border:1px solid #f15025" />
+								</td>
+								<td>{{ $value->user->code}}</td>
+                                <td>
+                                    <div class="text-center">
+                                    <a href="{{route('student_registration.edit',$value->student_id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+
+                                    <a href="{{ route('student_registration.delete',$value->student_id) }}" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </td>
+								
+							</tr>
+                                
+                            @endforeach					
+							
+						</tbody>
+						<tfoot>
+						
+						</tfoot>
+					  </table>
+
+					  @endif
 					</div>
 				</div>
 				<!-- /.box-body -->

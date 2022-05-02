@@ -176,7 +176,10 @@ Route::prefix('students')->group(function () {
     Route::get('student-registration/index', [StudentRegistrationController::class, 'index'])->name('student_registration.index');
     Route::get('student-registration/create', [StudentRegistrationController::class, 'create'])->name('student_registration.create');
     Route::post('student-registration/store', [StudentRegistrationController::class, 'store'])->name('student_registration.store');
-    Route::get('student-registration/edit/{id}', [StudentRegistrationController::class, 'edit'])->name('student_registration.edit');
-    Route::post('student-registration/update/{id}', [StudentRegistrationController::class, 'update'])->name('student_registration.update');
-    Route::get('student-registration/delete/{id}', [StudentRegistrationController::class, 'delete'])->name('student_registration.delete');
+    Route::get('student-registration/edit/{student_id}', [StudentRegistrationController::class, 'edit'])->name('student_registration.edit');
+    Route::post('student-registration/update/{student_id}', [StudentRegistrationController::class, 'update'])->name('student_registration.update');
+
+    // SEARCH BY YEAR CLASS
+    Route::get('student-search', [StudentRegistrationController::class, 'search'])->name('search_by_year_class_wise');
+    Route::get('student-registration/delete/{student_id}', [StudentRegistrationController::class, 'delete'])->name('student_registration.delete');
 });
