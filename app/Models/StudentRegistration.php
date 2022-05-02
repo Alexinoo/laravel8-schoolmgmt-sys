@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class StudentRegistration extends Model
 {
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'student_id', 'id');
+    }
+    public function year()
+    {
+        return $this->belongsTo(StudentYear::class, 'year_id', 'id');
+    }
+    public function class()
+    {
+        return $this->belongsTo(StudentClass::class, 'class_id', 'id');
+    }
 }
