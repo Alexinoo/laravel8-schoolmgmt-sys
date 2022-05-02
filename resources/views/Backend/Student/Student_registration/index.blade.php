@@ -102,7 +102,7 @@
                                     <div class="text-center">
                                     <a href="{{route('student_registration.edit',$value->student_id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
-                                    <a href="{{ route('student_registration.delete',$value->student_id) }}" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('student_registration.promotion',$value->student_id) }}" class="btn btn-circle btn-success btn-xs ml-3" ><i class="fa fa-line-chart"></i></a>
                                     </div>
                                 </td>
 								
@@ -153,7 +153,7 @@
                                     <div class="text-center">
                                     <a href="{{route('student_registration.edit',$value->student_id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
-                                    <a href="{{ route('student_registration.delete',$value->student_id) }}" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('student_registration.promotion',$value->student_id) }}" class="btn btn-circle btn-success btn-xs ml-3"><i class="fa fa-line-chart"></i></a>
                                     </div>
                                 </td>
 								
