@@ -87,11 +87,11 @@
                                 <td>{{$key+1}}</td>
 								<td>{{ $value->user->name}}</td>
 								<td>{{ $value->user->id_no}}</td>
-								<td></td>
+								<td>{{ $value->roll}}</td>
 								<td>{{ $value->year->name}}</td>
 								<td>{{ $value->class->name}}</td>
 								<td>
-									<img src="{{ asset('uploads/student_images/'.$value->user->image)}}" alt="Image" style="width: 50px;height:50px;border:1px solid #f15025;">
+									<img src="{{ asset('uploads/student_images/'.$value->user->image)}}" alt="Image" style="width: 60px;height:60px;border:1px solid #f15025;">
 								</td>
 								<td>{{ $value->user->code}}</td>
                                 <td>

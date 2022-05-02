@@ -16,6 +16,7 @@ class CreateStudentRegistrationsTable extends Migration
         Schema::create('student_registrations', function (Blueprint $table) {
             $table->id();
             $table->integer('student_id')->comment('user_id-student_id');
+            $table->integer('roll');
             $table->integer('class_id');
             $table->integer('year_id');
             $table->integer('group_id')->nullable();
