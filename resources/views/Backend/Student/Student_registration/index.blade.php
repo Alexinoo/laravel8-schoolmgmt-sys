@@ -10,6 +10,7 @@
 		<section class="content">
 		  <div class="row">
 
+			<div class="col-12">
 			  <div class="box bb-3 border-warning">
 				  <div class="box-header">
 					<h4 class="box-title">Student <strong>Search</strong></h4>
@@ -23,9 +24,9 @@
                                         <h5>Year</h5>
                                         <div class="controls">
                                           <select name="year_id" id="year_id"  class="form-control">
-                                              <option value="" selected='' disabled >-Select Year-</option>
+                                              <option value="" selected='' disabled >Search By Year</option>
                                               @foreach($years as $key => $year)
-                                                    <option value="{{$year->id}}">{{$year->name}}</option>
+                                                    <option value="{{$year->id}}" {{ ( $year_id == $year->id )? 'selected' :''}} >{{$year->name}}</option>
                                               @endforeach                                            
                                           </select>                                  
                                         </div>
@@ -36,9 +37,9 @@
                                         <h5>Class</h5>
                                         <div class="controls">
                                           <select name="class_id" id="class_id"  class="form-control">
-                                              <option value="" selected='' disabled >-Select Class-</option>
+                                              <option value="" selected='' disabled >Search By Class</option>
                                                 @foreach($classes as $key => $class)
-                                                    <option value="{{$class->id}}">{{$class->name}}</option>
+                                                    <option value="{{$class->id}}" {{ ( $class_id == $class->id )? 'selected' :''}}>{{$class->name}}</option>
                                               @endforeach     
                                           </select>                                  
                                         </div>
@@ -51,6 +52,7 @@
 					</form>
 				  </div>
 				</div>
+		     </div>
 
 			<div class="col-12">
 
@@ -67,7 +69,13 @@
 							<tr>
                                 <th style="width: 25px">ID</th>
 								<th>Name</th>				
-								<th>ID No</th>				
+								<th>Roll</th>				
+								<th>Year</th>				
+								<th>Class</th>				
+								<th>Image</th>	
+								@if(Auth::user()->role == 'Admin')			
+								<th>Code</th>		
+								@endif		
 								<th class="text-center">Action</th>								
 							</tr>
 						</thead>
@@ -76,8 +84,14 @@
 
                             	<tr>
                                 <td>{{$key+1}}</td>
-								<td>{{ $value->name}}</td>
-								<td>{{ $value->id_no}}</td>
+								<td>{{ $value->user->name}}</td>
+								<td></td>
+								<td>{{ $value->year->name}}</td>
+								<td>{{ $value->class->name}}</td>
+								<td>
+									<img src="{{ asset('uploads/student_images/'.$value->user->image)}}" alt="Image" style="width: 50px;height:50px;">
+								</td>
+								<td>{{ $value->user->code}}</td>
                                 <td>
                                     <div class="text-center">
                                     <a href="{{route('student_registration.edit',$value->id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
