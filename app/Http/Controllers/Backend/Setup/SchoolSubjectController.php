@@ -40,9 +40,9 @@ class SchoolSubjectController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:school_subjects,name']
         ]);
-        $user = new SchoolSubject();
-        $user->name = $request->name;
-        $user->save();
+        $model = new SchoolSubject();
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'School Subject Added Successfully',
@@ -88,9 +88,9 @@ class SchoolSubjectController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:school_subjects,name']
         ]);
-        $user = SchoolSubject::find($id);
-        $user->name = $request->name;
-        $user->update();
+        $model = SchoolSubject::find($id);
+        $model->name = $request->name;
+        $model->update();
 
         $notification = array(
             'message' => 'School Subject Updated Successfully',
@@ -108,8 +108,8 @@ class SchoolSubjectController extends Controller
      */
     public function destroy($id)
     {
-        $user = SchoolSubject::find($id);
-        $user->delete();
+        $model = SchoolSubject::find($id);
+        $model->delete();
 
         $notification = array(
             'message' => 'School Subject deleted Successfully',

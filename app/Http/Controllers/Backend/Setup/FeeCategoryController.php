@@ -40,9 +40,9 @@ class FeeCategoryController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:Fee_categories,name']
         ]);
-        $user = new FeeCategory();
-        $user->name = $request->name;
-        $user->save();
+        $model = new FeeCategory();
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Fee category Added Successfully',
@@ -88,9 +88,9 @@ class FeeCategoryController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:Fee_categories,name']
         ]);
-        $user = FeeCategory::find($id);
-        $user->name = $request->name;
-        $user->save();
+        $model = FeeCategory::find($id);
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Fee category updated Successfully',
@@ -108,8 +108,8 @@ class FeeCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $user = FeeCategory::find($id);
-        $user->delete();
+        $model = FeeCategory::find($id);
+        $model->delete();
 
         $notification = array(
             'message' => 'Fee category deleted Successfully',

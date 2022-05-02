@@ -40,9 +40,9 @@ class StudentClassController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:student_classes,name']
         ]);
-        $user = new StudentClass();
-        $user->name = $request->name;
-        $user->save();
+        $model = new StudentClass();
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Student class Added Successfully',
@@ -88,9 +88,9 @@ class StudentClassController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:student_classes,name']
         ]);
-        $user = StudentClass::find($id);
-        $user->name = $request->name;
-        $user->update();
+        $model = StudentClass::find($id);
+        $model->name = $request->name;
+        $model->update();
 
         $notification = array(
             'message' => 'Student class Updated Successfully',
@@ -108,8 +108,8 @@ class StudentClassController extends Controller
      */
     public function destroy($id)
     {
-        $user = StudentClass::find($id);
-        $user->delete();
+        $model = StudentClass::find($id);
+        $model->delete();
 
         $notification = array(
             'message' => 'Student class deleted Successfully',

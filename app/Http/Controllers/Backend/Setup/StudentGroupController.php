@@ -40,9 +40,9 @@ class StudentGroupController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:student_groups,name']
         ]);
-        $user = new StudentGroup();
-        $user->name = $request->name;
-        $user->save();
+        $model = new StudentGroup();
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Student group Added Successfully',
@@ -88,9 +88,9 @@ class StudentGroupController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:student_groups,name']
         ]);
-        $user = StudentGroup::find($id);
-        $user->name = $request->name;
-        $user->save();
+        $model = StudentGroup::find($id);
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Student group updated Successfully',
@@ -108,8 +108,8 @@ class StudentGroupController extends Controller
      */
     public function destroy($id)
     {
-        $user = StudentGroup::find($id);
-        $user->delete();
+        $model = StudentGroup::find($id);
+        $model->delete();
 
         $notification = array(
             'message' => 'Student group deleted Successfully',

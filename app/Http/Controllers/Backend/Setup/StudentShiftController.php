@@ -40,9 +40,9 @@ class StudentShiftController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:student_shifts,name']
         ]);
-        $user = new StudentShift();
-        $user->name = $request->name;
-        $user->save();
+        $model = new StudentShift();
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Student shift Added Successfully',
@@ -88,9 +88,9 @@ class StudentShiftController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:student_shifts,name']
         ]);
-        $user = StudentShift::find($id);
-        $user->name = $request->name;
-        $user->save();
+        $model = StudentShift::find($id);
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Student shift updated Successfully',
@@ -108,8 +108,8 @@ class StudentShiftController extends Controller
      */
     public function destroy($id)
     {
-        $user = StudentShift::find($id);
-        $user->delete();
+        $model = StudentShift::find($id);
+        $model->delete();
 
         $notification = array(
             'message' => 'Student shift deleted Successfully',

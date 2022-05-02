@@ -40,9 +40,9 @@ class ExamTypeController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:exam_types,name']
         ]);
-        $user = new ExamType();
-        $user->name = $request->name;
-        $user->save();
+        $model = new ExamType();
+        $model->name = $request->name;
+        $model->save();
 
         $notification = array(
             'message' => 'Exam Type Added Successfully',
@@ -88,9 +88,9 @@ class ExamTypeController extends Controller
         $data = $request->validate([
             'name' => ['required', 'unique:exam_types,name']
         ]);
-        $user = ExamType::find($id);
-        $user->name = $request->name;
-        $user->update();
+        $model = ExamType::find($id);
+        $model->name = $request->name;
+        $model->update();
 
         $notification = array(
             'message' => 'Exam Type Updated Successfully',
@@ -108,8 +108,8 @@ class ExamTypeController extends Controller
      */
     public function destroy($id)
     {
-        $user = ExamType::find($id);
-        $user->delete();
+        $model = ExamType::find($id);
+        $model->delete();
 
         $notification = array(
             'message' => 'Exam Type deleted Successfully',
