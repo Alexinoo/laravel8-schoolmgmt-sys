@@ -236,9 +236,60 @@ class StudentRegistrationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($student_id)
+    public function promotion($student_id)
     {
-        //
+        $data['years'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['groups'] = StudentGroup::all();
+        $data['shifts'] = StudentShift::all();
+
+        $data['model'] = StudentRegistration::with(['user', 'discount'])->where('student_id', $student_id)->first();
+
+        return view('Backend.Student.Student_registration.promotion', $data);
+    }
+
+    // Promote student
+    public function promotion_update(Request $request, $student_id)
+    {
+        DB::transaction(function () use ($request, $student_id) {
+
+            $user = User::where('id', $student_id)->first();
+
+            if ($request->hasfile('image')) {
+                $destination = 'uploads/student_images/' . $user->image;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('image');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move('uploads/student_images/', $filename);
+                //Save the filename in the db
+                $user->image = $filename;
+            }
+            $user->save();
+
+            // Save to Student Registration
+            $student = new StudentRegistration();
+            $student->student_id = $student_id;
+            $student->class_id = $request->class_id;
+            $student->year_id = $request->year_id;
+            $student->group_id = $request->group_id;
+            $student->shift_id = $request->shift_id;
+            $student->save();
+
+            // Save to school Discount
+            $discount = new DiscountStudent();
+            $discount->student_id = $student_id;
+            $discount->fee_category_id = 2;
+            $discount->discount = $request->discount;
+            $discount->save();
+        });
+        $notification = array(
+            'message' => 'Student promotion saved Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('student_registration.index')->with($notification);
     }
 
     /**
