@@ -75,6 +75,7 @@
             <li><a href="{{ route('exam_type.index') }}"><i class="ti-more"></i>Exam type</a></li>
             <li><a href="{{ route('school_subject.index') }}"><i class="ti-more"></i>School Subject</a></li>
             <li><a href="{{ route('assign_subject.index') }}"><i class="ti-more"></i>Assign Subject</a></li>
+            <li><a href="{{ route('designation.index') }}"><i class="ti-more"></i>Designation</a></li>
         
           </ul>
         </li>
