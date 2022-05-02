@@ -28,10 +28,10 @@
                                     <div class="form-group">
                                         <h5>User Role <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <select name="user_type" id="user_type" required class="form-control">
+                                            <select name="role" id="role" class="form-control">
                                                 <option value="" selected="" disabled>-Select role-</option>
-                                                <option value="0">User</option>
-                                                <option value="1">Admin</option>                                              
+                                                <option value="Admin">Admin</option>                                              
+                                                <option value="Operator">Operator</option>
                                             </select>
                                         </div>
                                     </div>
@@ -41,7 +41,7 @@
                                     	<div class="form-group">
                                         <h5>Username<span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="name" class="form-control" required >
+                                            <input type="text" name="name" class="form-control" />
                                          </div>                                     
                                     </div>
                                 </div>
@@ -61,12 +61,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <h5>Password<span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="password" name="password" class="form-control" required >
-                                         </div>                                     
-                                    </div>
+                                  
                                 </div>
 
                             </div>    

@@ -27,6 +27,7 @@
                                 <th>Role</th>
 								<th>Name</th>
 								<th>Email</th>
+								<th>Code</th>
 								<th>Profile photo</th>								
 								<th>Action</th>								
 							</tr>
@@ -36,9 +37,10 @@
 
                             	<tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{ ($value->user_type == 0) ? 'user' : 'Admin' }}</td>
+                                <td>{{ $value->role }}</td>
 								<td>{{ $value->name}}</td>
 								<td>{{ $value->email}}</td>
+								<td>{{ $value->code}}</td>
 								<td><img src="{{url('storage/'.$value->profile_photo_path)}}" alt="Profile" style="width: 50px;height:50px"/></td>
                                 <td>
                                     <div class="text-center">

@@ -25,13 +25,13 @@
                             {{-- Row 1 --}}
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                     <div class="form-group">
                                         <h5>User Role <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <select name="user_type" id="user_type" class="form-control">
+                                            <select name="role" id="role" class="form-control">
                                                 <option value="" selected="" disabled="" >-Select role-</option>
-                                                <option value="0"  {{ $user->user_type == 0 ? 'selected' : '' }}>User</option>
-                                                <option value="1"  {{ $user->user_type == 1 ? 'selected' : '' }}>Admin</option>                                              
+                                                <option value="Admin"  {{ $user->role == 'Admin' ? 'selected' : '' }}>Admin</option>
+                                                <option value="Operator"  {{ $user->role == 'Operator' ? 'selected' : '' }}>Operator</option>                                              
                                             </select>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                  
+                                
                                 </div>
 
                             </div>    
