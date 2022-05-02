@@ -181,5 +181,9 @@ Route::prefix('students')->group(function () {
 
     // SEARCH BY YEAR CLASS
     Route::get('student-search', [StudentRegistrationController::class, 'search'])->name('search_by_year_class_wise');
-    Route::get('student-registration/delete/{student_id}', [StudentRegistrationController::class, 'delete'])->name('student_registration.delete');
+
+    // Student Promotion
+    Route::get('student-promotion/promotion/{student_id}', [StudentRegistrationController::class, 'promotion'])->name('student_registration.promotion');
+
+    Route::post('student-promotion/promotion/{student_id}', [StudentRegistrationController::class, 'promotion_update'])->name('student_promotion');
 });
