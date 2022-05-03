@@ -13,6 +13,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use PDF;
 
 class StudentRegistrationController extends Controller
 {
@@ -309,5 +310,18 @@ class StudentRegistrationController extends Controller
         $model = StudentRegistration::where('year_id', $year_id)->where('class_id', $class_id)->get();
 
         return view('Backend.Student.Student_registration.index', compact('model', 'years', 'classes', 'year_id', 'class_id'));
+    }
+
+
+    // Export PDF
+
+    public function export_pdf($student_id)
+    {
+        $data['model'] = StudentRegistration::with(['user', 'discount', 'year', 'class', 'group', 'shift'])->where('student_id', $student_id)->first();
+
+        $pdf = PDF::loadView('Backend.Student.Student_registration.student_details_pdf', $data);
+        // $pdf->setProtection(['copy', 'print'], ' ', 'pass'); //not available
+
+        return $pdf->stream('employee.pdf');
     }
 }
