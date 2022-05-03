@@ -97,6 +97,8 @@
             <li><a href="{{ route('registration_fee.index') }}"><i class="ti-more"></i>Registration Fee</a></li>
 
             <li><a href="{{ route('monthly_fee.index') }}"><i class="ti-more"></i>Monthly Fee</a></li>
+
+            <li><a href="{{ route('exam_fee.index') }}"><i class="ti-more"></i>Exam Fee</a></li>
            
           </ul>
         </li>
