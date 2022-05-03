@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
+use App\Http\Controllers\Backend\Student\ExamFeeController;
 use App\Http\Controllers\Backend\Student\MonthlyFeeController;
 use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 use App\Http\Controllers\Backend\Student\StudentRegistrationController;
@@ -210,11 +211,21 @@ Route::prefix('students')->group(function () {
 
 
 
-    // Monthly Fee  registration_fee.index
+    // Monthly Fee  
     Route::get('monthly-fee/index', [MonthlyFeeController::class, 'index'])->name('monthly_fee.index');
     // Get Monthly Fee - Class-wise
     Route::get('monthly-fee/class-wise', [MonthlyFeeController::class, 'StudentMonthlyFeeClasswise'])->name('Student-Monthly-Fee-Classwise');
 
     // Download Monthly Fee
-    Route::get('monthly-fee/payslip', [MonthlyFeeController::class, 'MonthlyFeeSlip'])->name('monthly_fee.slip');
+    Route::get('monthly-fee/slip', [MonthlyFeeController::class, 'MonthlyFeeSlip'])->name('monthly_fee.slip');
+
+
+
+    // Exam Fee 
+    Route::get('exam-fee/index', [ExamFeeController::class, 'index'])->name('exam_fee.index');
+    // Get Exam Fee - Class-wise
+    Route::get('exam-fee/class-wise', [ExamFeeController::class, 'StudentExamFeeClasswise'])->name('Student-Exam-Fee-Classwise');
+
+    // Download Exam Fee
+    Route::get('exam-fee/slip', [ExamFeeController::class, 'ExamFeeSlip'])->name('exam_fee.slip');
 });
