@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
+use App\Http\Controllers\Backend\Student\MonthlyFeeController;
 use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 use App\Http\Controllers\Backend\Student\StudentRegistrationController;
 use App\Http\Controllers\Backend\Student\StudentRollController;
@@ -198,7 +199,7 @@ Route::prefix('students')->group(function () {
     Route::get('fetch_students', [StudentRollController::class, 'fetchStudents'])->name('fetch_students');
     Route::post('generate-roll/store', [StudentRollController::class, 'store'])->name('generate_roll.store');
 
-    // Registration Fee  registration_fee.index
+    // Registration Fee  
     Route::get('registration-fee/index', [RegistrationFeeController::class, 'index'])->name('registration_fee.index');
 
     // Get Registration Fee - Class-wise
@@ -206,4 +207,14 @@ Route::prefix('students')->group(function () {
 
 
     Route::get('registration-fee/payslip', [RegistrationFeeController::class, 'RegistrationFeeSlip'])->name('registration_fee.slip');
+
+
+
+    // Monthly Fee  registration_fee.index
+    Route::get('monthly-fee/index', [MonthlyFeeController::class, 'index'])->name('monthly_fee.index');
+    // Get Monthly Fee - Class-wise
+    Route::get('monthly-fee/class-wise', [MonthlyFeeController::class, 'StudentMonthlyFeeClasswise'])->name('Student-Monthly-Fee-Classwise');
+
+    // Download Monthly Fee
+    Route::get('monthly-fee/payslip', [MonthlyFeeController::class, 'MonthlyFeeSlip'])->name('monthly_fee.slip');
 });
