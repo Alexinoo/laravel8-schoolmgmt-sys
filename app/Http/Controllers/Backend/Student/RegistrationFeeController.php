@@ -8,6 +8,7 @@ use App\Models\StudentClass;
 use App\Models\StudentRegistration;
 use App\Models\StudentYear;
 use Illuminate\Http\Request;
+use PDF;
 
 class RegistrationFeeController extends Controller
 {
@@ -66,7 +67,7 @@ class RegistrationFeeController extends Controller
 
             $html[$key]['tdsource'] .= '<td>' . $finalfee . '$' . '</td>';
             $html[$key]['tdsource'] .= '<td>';
-            $html[$key]['tdsource'] .= '<a class="btn btn-sm btn-' . $color . '" title="Registration Fee Slip" target="_blanks" href="' . route("registration_fee.slip") . '?class_id=' . $value->class_id . '&student_id=' . $value->student_id . '">Fee Slip</a>';
+            $html[$key]['tdsource'] .= '<a class="btn btn-sm btn-' . $color . '" title="Registration Fee Slip" target="_blanks" href="' . route("registration_fee.slip") . '?class_id=' . $value->class_id . '&student_id=' . $value->student_id . '"><i class="fa fa-file-pdf-o"></i></a>';
             $html[$key]['tdsource'] .= '</td>';
         }
 
@@ -76,8 +77,20 @@ class RegistrationFeeController extends Controller
 
 
     // Generate Registration Fee Slip 
-    public function RegistrationFeeSlip()
+    public function RegistrationFeeSlip(Request $request)
     {
+        // Get student_id and class_id - passed to this route
+        $student_id = $request->student_id;
+        $class_id = $request->class_id;
+
+        $data['model'] = StudentRegistration::with(['user', 'discount'])->where([
+            'student_id' => $student_id,
+            'class_id' => $class_id
+        ])->first();
+
+        $pdf = PDF::loadView('Backend.Student.Registration_fee.registration_feeslip_pdf', $data);
+
+        return $pdf->stream('employee.pdf');
     }
 
 
