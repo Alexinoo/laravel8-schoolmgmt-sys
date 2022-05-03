@@ -186,4 +186,7 @@ Route::prefix('students')->group(function () {
     Route::get('student-promotion/promotion/{student_id}', [StudentRegistrationController::class, 'promotion'])->name('student_registration.promotion');
 
     Route::post('student-promotion/promotion/{student_id}', [StudentRegistrationController::class, 'promotion_update'])->name('student_promotion');
+
+    // Export to pdf
+    Route::get('student-pdf/{student_id}', [StudentRegistrationController::class, 'export_pdf'])->name('student_pdf');
 });
