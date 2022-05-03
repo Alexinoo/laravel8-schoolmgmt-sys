@@ -119,7 +119,8 @@
                                      <div class="form-group">
                                         <h5>Discount<span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="number" name="discount" min="1" max="100" class="form-control"  value="{{$model->discount->discount}}"/>              
+                                            <input type="number" name="discount" min="1" max="100" class="form-control"  
+                                            value="{{$model->discount->discount}}"/>              
                                         </div>
                                     </div>
                                 </div>

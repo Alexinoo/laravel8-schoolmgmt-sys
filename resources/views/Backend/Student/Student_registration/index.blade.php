@@ -103,6 +103,8 @@
                                     <a href="{{route('student_registration.edit',$value->student_id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
                                     <a href="{{ route('student_registration.promotion',$value->student_id) }}" class="btn btn-circle btn-success btn-xs ml-3" ><i class="fa fa-line-chart"></i></a>
+
+									   <a href="{{ route('student_pdf',$value->student_id) }}" target = "_blank" class="btn btn-circle btn-primary btn-xs ml-3"><i class="fa fa-file-pdf-o"></i></a>
                                     </div>
                                 </td>
 								
@@ -154,6 +156,8 @@
                                     <a href="{{route('student_registration.edit',$value->student_id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
                                     <a href="{{ route('student_registration.promotion',$value->student_id) }}" class="btn btn-circle btn-success btn-xs ml-3"><i class="fa fa-line-chart"></i></a>
+
+                                    <a href="{{ route('student_pdf',$value->student_id) }}"  target = "_blank" class="btn btn-circle btn-primary btn-xs ml-3"><i class="fa fa-file-pdf-o"></i></a>
                                     </div>
                                 </td>
 								
