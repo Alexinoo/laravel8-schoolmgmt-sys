@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\Backend\Student\StudentRegistrationController;
+use App\Http\Controllers\Backend\Student\StudentRollController;
 use App\Http\Controllers\Backend\UserController;
 use App\Models\FeeAmount;
 use Illuminate\Support\Facades\Route;
@@ -189,4 +190,10 @@ Route::prefix('students')->group(function () {
 
     // Export to pdf
     Route::get('student-pdf/{student_id}', [StudentRegistrationController::class, 'export_pdf'])->name('student_pdf');
+
+
+    // Generate Roll - 
+    Route::get('generate-roll/index', [StudentRollController::class, 'index'])->name('generate_roll.index');
+    Route::get('fetch_students', [StudentRollController::class, 'fetchStudents'])->name('fetch_students');
+    Route::post('generate-roll/store', [StudentRollController::class, 'store'])->name('generate_roll.store');
 });
