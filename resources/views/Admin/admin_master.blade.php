@@ -64,6 +64,10 @@
 
   {{-- Sweet Alert 2 -Custom--}}
   <script src="{{ asset('backend/js/sweetalert2.all.min.js') }}"></script>
+
+
+  {{-- HandleBars -minJs--}}
+  <script src="{{ asset('backend/js/handlebars.min.js') }}"></script>
 	
 	<!-- Sunny Admin App -->
 	<script src="{{ asset('backend/js/template.js') }}"></script>
