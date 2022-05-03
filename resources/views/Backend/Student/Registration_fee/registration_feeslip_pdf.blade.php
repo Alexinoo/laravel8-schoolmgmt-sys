@@ -38,11 +38,15 @@
 
 <table id="customers">
   <tr>
-    <td><h2>Coding Pro</h2></td>
+    <td><h2>  
+      <?php $img_path = '/uploads/easyschool.png' ?>
+       <img src="{{ public_path() . $img_path }}" alt="School Logo" style="width: 200;height:100;">
+      </h2></td>
     <td><h2>School ERP</h2></th>
     <p>School Address</p>
     <p>Phone : 43434</p>
     <p>Email : support@codingpro.com</p>
+        <p><strong>Student Registration Fee<strong></p>
   </tr>
 </table>
 
