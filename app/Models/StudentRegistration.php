@@ -21,6 +21,14 @@ class StudentRegistration extends Model
     {
         return $this->belongsTo(StudentClass::class, 'class_id', 'id');
     }
+    public function group()
+    {
+        return $this->belongsTo(StudentGroup::class, 'group_id', 'id');
+    }
+    public function shift()
+    {
+        return $this->belongsTo(StudentShift::class, 'shift_id', 'id');
+    }
 
     // Abit Tricky - Reversal
     public function discount()
