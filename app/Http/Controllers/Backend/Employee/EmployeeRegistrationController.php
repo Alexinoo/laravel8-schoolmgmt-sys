@@ -139,9 +139,13 @@ class EmployeeRegistrationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($employee_id)
     {
-        //
+        $data['user'] = User::where('id', $employee_id)->first();
+
+        $data['designations'] = Designation::all();
+
+        return view('Backend.Employee.Employee_registration.edit', $data);
     }
 
     /**
@@ -151,9 +155,41 @@ class EmployeeRegistrationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $employee_id)
     {
-        //
+        DB::transaction(function () use ($request, $employee_id) {
+
+            $user = User::where('id', $employee_id)->first();
+
+            $user->name = $request->name;
+            $user->father_name = $request->father_name;
+            $user->mother_name = $request->mother_name;
+            $user->phone = $request->phone;
+            $user->address = $request->address;
+            $user->gender = $request->gender;
+            $user->religion = $request->religion;
+            $user->dob = date('Y-m-d', strtotime($request->dob));
+            $user->designation_id = $request->designation_id;
+
+            if ($request->hasfile('image')) {
+                $destination = 'uploads/employee_images/' . $user->image;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('image');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move('uploads/employee_images/', $filename);
+                //Save the filename in the db
+                $user->image = $filename;
+            }
+            $user->save();
+        });
+        $notification = array(
+            'message' => 'Employee registration updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('employee_registration.index')->with($notification);
     }
 
     /**
