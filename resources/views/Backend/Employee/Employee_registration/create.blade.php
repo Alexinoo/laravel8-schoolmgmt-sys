@@ -118,7 +118,7 @@
                                      <div class="form-group">
                                         <h5>Designation <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                          <select name="designation" id="designation"  class="form-control">
+                                          <select name="designation_id" id="designation_id"  class="form-control">
                                               <option value="" selected='' disabled >-Select designation-</option>
                                               @foreach($designations as $key => $designation)
                                                 <option value="{{$designation->id}}">{{$designation->name}}</option>
