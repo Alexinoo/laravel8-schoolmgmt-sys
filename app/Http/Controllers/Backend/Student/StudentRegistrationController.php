@@ -224,8 +224,8 @@ class StudentRegistrationController extends Controller
             $discount->save();
         });
         $notification = array(
-            'message' => 'Student registration inserted Successfully',
-            'alert-type' => 'success'
+            'message' => 'Student registration updated Successfully',
+            'alert-type' => 'info'
         );
 
         return redirect()->route('student_registration.index')->with($notification);
