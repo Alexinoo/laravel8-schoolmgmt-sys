@@ -244,7 +244,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('employee-registration/edit/{employee_id}', [EmployeeRegistrationController::class, 'edit'])->name('employee_registration.edit');
         Route::post('employee-registration/update/{employee_id}', [EmployeeRegistrationController::class, 'update'])->name('employee_registration.update');
 
-        Route::get('employee-registration/delete/{employee_id}', [EmployeeRegistrationController::class, 'destroy'])->name('employee_registration.delete');
+        // Export to pdf
+        Route::get('employee-pdf/{employee_id}', [EmployeeRegistrationController::class, 'export_pdf'])->name('employee_pdf');
     });
 });
 
