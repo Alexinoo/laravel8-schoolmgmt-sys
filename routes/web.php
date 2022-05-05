@@ -256,6 +256,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('employee-salary/increment/{employee_id}', [EmployeeSalaryController::class, 'increment'])->name('employee_salary.increment');
 
         Route::post('employee-salary/update/{employee_id}', [EmployeeSalaryController::class, 'update'])->name('employee_salary.update');
+
+        Route::get('employee-salary/history/{employee_id}', [EmployeeSalaryController::class, 'salary_history'])->name('employee_salary.history');
     });
 });
 
