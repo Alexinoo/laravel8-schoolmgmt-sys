@@ -79,16 +79,7 @@ class EmployeeLeaveController extends Controller
         return redirect()->route('employee_leave.index')->with($notification);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -98,7 +89,12 @@ class EmployeeLeaveController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['model'] = Employee_leave::find($id);
+
+        $data['employees'] = User::where('user_type', 'Employee')->get();
+
+        $data['leave_purpose'] = Leave_purpose::all();
+        return view('Backend.Employee.Employee_leave.edit', $data);
     }
 
     /**
@@ -108,9 +104,40 @@ class EmployeeLeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $leave_id)
     {
-        //
+        $data = $request->validate([
+            'employee_id' => 'required',
+            'leave_purpose_id' => 'required',
+            'applied_from' => 'required',
+            'applied_to' => 'required'
+        ]);
+
+        DB::transaction(function () use ($request, $leave_id) {
+
+            if ($request->leave_purpose_id == 0) {
+
+                $leavePurpose  = new Leave_purpose;
+                $leavePurpose->name = ($request->input('name') != null) ? $request->input('name') : 'Unknown';
+                $leavePurpose->save();
+                $leave_purpose_id = $leavePurpose->id;
+            } else {
+                $leave_purpose_id = $request->leave_purpose_id;
+            }
+
+            $model = Employee_leave::find($leave_id);
+            $model->employee_id = $request->employee_id;
+            $model->leave_purpose_id = $leave_purpose_id;
+            $model->applied_from = date('Y-m-d', strtotime($request->applied_from));
+            $model->applied_to = date('Y-m-d', strtotime($request->applied_to));
+            $model->update();
+        });
+        $notification = array(
+            'message' => 'Leave request updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('employee_leave.index')->with($notification);
     }
 
     /**
@@ -119,8 +146,19 @@ class EmployeeLeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($leave_id)
     {
-        //
+        DB::transaction(function () use ($leave_id) {
+
+            $model = Employee_leave::find($leave_id);
+
+            $model->delete();
+        });
+        $notification = array(
+            'message' => 'Leave request deleted Successfully',
+            'alert-type' => 'error'
+        );
+
+        return redirect()->route('employee_leave.index')->with($notification);
     }
 }
