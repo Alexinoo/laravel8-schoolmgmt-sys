@@ -44,7 +44,7 @@
                                     <div class="text-center">
                                     <a title="Increment" href="{{route('employee_salary.increment',$value->id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-plus-circle"></i></a>
 
-                                    {{-- <a title="Details" href="{{ route('employee_pdf',$value->id) }}"  target = "_blank" class="btn btn-circle btn-primary btn-xs ml-3"><i class="fa fa-file-pdf-o"></i></a> --}}
+                                    <a title="History" href="{{ route('employee_salary.history',$value->id) }}" class="btn btn-circle btn-primary btn-xs ml-3"><i class="fa fa-history"></i></a>
                                     </div>
                                 </td>
 								
