@@ -78,4 +78,14 @@ class EmployeeSalaryController extends Controller
 
         return redirect()->route('employee_salary.index')->with($notification);
     }
+
+    // Render Salary history data
+    public function salary_history($employee_id)
+    {
+        $data['user'] = User::where('id', $employee_id)->first();
+
+        $data['salaryHist'] = EmployeeSalaryLog::where('employee_id', $data['user']->id)->get();
+
+        return view('Backend.Employee.Employee_salary.salary_history', $data);
+    }
 }
