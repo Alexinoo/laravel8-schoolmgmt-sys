@@ -18,7 +18,7 @@ class EmployeeAttendanceController extends Controller
      */
     public function index()
     {
-        $data['model'] = Employee_attendance::orderBy('id', 'DESC')->get();
+        $data['model'] = Employee_attendance::select('date')->groupBy('date')->orderBy('id', 'DESC')->get();
 
         return view('Backend.Employee.Employee_attendance.index', $data);
     }
