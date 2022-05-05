@@ -322,6 +322,6 @@ class StudentRegistrationController extends Controller
         $pdf = PDF::loadView('Backend.Student.Student_registration.student_details_pdf', $data);
         // $pdf->setProtection(['copy', 'print'], ' ', 'pass'); //not available
 
-        return $pdf->stream('employee.pdf');
+        return $pdf->stream('student.pdf');
     }
 }
