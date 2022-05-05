@@ -116,6 +116,8 @@
           
             <li><a href="{{ route('employee_salary.index') }}"><i class="ti-more"></i>Employee Salary</a></li>
 
+            <li><a href="{{ route('employee_leave.index') }}"><i class="ti-more"></i>Employee Leave</a></li>
+
           
         
            
