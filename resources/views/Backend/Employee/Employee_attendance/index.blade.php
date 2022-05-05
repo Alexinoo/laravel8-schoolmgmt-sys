@@ -25,6 +25,7 @@
 							<tr>
                                 <th>ID</th>
                                 <th>Emp No</th>
+                                <th>Name</th>
 								<th>Date</th>				
                                 <th>Attendance Status</th>
 								<th class="text-center">Action</th>								
@@ -37,7 +38,7 @@
                                 <td>{{$key+1}}</td>
 								<td>{{ $attendance->user->id_no}}</td>
 								<td>{{ $attendance->user->name}}</td>
-								<td>{{ $attendance->date}}</td>
+								<td>{{ date('d-m-Y',strtotime($attendance->date))}}</td>
 								<td>{{ $attendance->attendance_status}}</td>
                                 <td>
                                     <div class="text-center">
@@ -52,9 +53,6 @@
                             @endforeach					
 							
 						</tbody>
-						<tfoot>
-						
-						</tfoot>
 					  </table>
 					</div>
 				</div>
