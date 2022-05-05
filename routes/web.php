@@ -268,11 +268,11 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('employee-leave/store', [EmployeeLeaveController::class, 'store'])->name('employee_leave.store');
 
-        Route::get('employee-leave/edit/{employee_id}', [EmployeeLeaveController::class, 'edit'])->name('employee_leave.edit');
+        Route::get('employee-leave/edit/{leave_id}', [EmployeeLeaveController::class, 'edit'])->name('employee_leave.edit');
 
-        Route::post('employee-leave/update/{employee_id}', [EmployeeLeaveController::class, 'update'])->name('employee_leave.update');
+        Route::post('employee-leave/update/{leave_id}', [EmployeeLeaveController::class, 'update'])->name('employee_leave.update');
 
-        Route::get('employee-leave/delete/{employee_id}', [EmployeeLeaveController::class, 'delete'])->name('employee_leave.delete');
+        Route::get('employee-leave/delete/{leave_id}', [EmployeeLeaveController::class, 'destroy'])->name('employee_leave.delete');
     });
 });
 
