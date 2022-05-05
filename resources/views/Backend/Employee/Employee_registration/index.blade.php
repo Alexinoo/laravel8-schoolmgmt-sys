@@ -56,7 +56,7 @@
                                     <div class="text-center">
                                     <a href="{{route('employee_registration.edit',$value->id)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
-                                    <a href="{{ route('employee_registration.delete',$value->id) }}" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('employee_pdf',$value->id) }}"  target = "_blank" class="btn btn-circle btn-primary btn-xs ml-3"><i class="fa fa-file-pdf-o"></i></a>
                                     </div>
                                 </td>
 								
