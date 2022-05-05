@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
+use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
@@ -246,6 +247,15 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Export to pdf
         Route::get('employee-pdf/{employee_id}', [EmployeeRegistrationController::class, 'export_pdf'])->name('employee_pdf');
+
+
+
+        // Salary - Review 
+        Route::get('employee-salary/index', [EmployeeSalaryController::class, 'index'])->name('employee_salary.index');
+
+        Route::get('employee-salary/increment/{employee_id}', [EmployeeSalaryController::class, 'increment'])->name('employee_salary.increment');
+
+        Route::post('employee-salary/update/{employee_id}', [EmployeeSalaryController::class, 'update'])->name('employee_salary.update');
     });
 });
 
