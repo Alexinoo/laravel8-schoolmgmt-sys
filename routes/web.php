@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
+use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
@@ -258,6 +259,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('employee-salary/update/{employee_id}', [EmployeeSalaryController::class, 'update'])->name('employee_salary.update');
 
         Route::get('employee-salary/history/{employee_id}', [EmployeeSalaryController::class, 'salary_history'])->name('employee_salary.history');
+
+
+        // Employee Leave
+        Route::get('employee-leave/index', [EmployeeLeaveController::class, 'index'])->name('employee_leave.index');
+
+        Route::get('employee-leave/create', [EmployeeLeaveController::class, 'create'])->name('employee_leave.create');
+
+        Route::post('employee-leave/store', [EmployeeLeaveController::class, 'store'])->name('employee_leave.store');
+
+        Route::get('employee-leave/edit/{employee_id}', [EmployeeLeaveController::class, 'edit'])->name('employee_leave.edit');
+
+        Route::post('employee-leave/update/{employee_id}', [EmployeeLeaveController::class, 'update'])->name('employee_leave.update');
+
+        Route::get('employee-leave/delete/{employee_id}', [EmployeeLeaveController::class, 'delete'])->name('employee_leave.delete');
     });
 });
 
