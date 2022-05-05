@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use PDF;
 
 class EmployeeRegistrationController extends Controller
 {
@@ -192,14 +193,15 @@ class EmployeeRegistrationController extends Controller
         return redirect()->route('employee_registration.index')->with($notification);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    // Export PDF
+
+    public function export_pdf($employee_id)
     {
-        //
+        $data['model'] = User::where('id', $employee_id)->first();
+
+        $pdf = PDF::loadView('Backend.Employee.Employee_registration.employee_details_pdf', $data);
+        // $pdf->setProtection(['copy', 'print'], ' ', 'pass'); //not available
+
+        return $pdf->stream('employee.pdf');
     }
 }
