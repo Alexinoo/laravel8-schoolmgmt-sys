@@ -26,8 +26,8 @@
                                        <div class="form-group">
                                         <h5>Attendance date<span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="date" name="name" class="form-control"/>
-                                             @error('name')
+                                            <input type="date" name="date" class="form-control"/>
+                                             @error('date')
                                                 <span class="text-danger">{{ $message}}</span>
                                             @enderror                                        
                                         </div>
