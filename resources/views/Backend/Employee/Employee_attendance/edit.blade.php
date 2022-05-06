@@ -16,7 +16,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col">
-                                <form action="{{ route('employee_attendance.update',$models[0]->date) }}" method="POST">
+                                <form action="{{ route('employee_attendance.store') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
