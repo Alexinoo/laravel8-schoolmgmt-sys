@@ -87,9 +87,14 @@ class EmployeeAttendanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($date)
     {
-        //
+        $data['models'] = Employee_attendance::where('date', $date)->get();
+
+
+        $data['employees'] = User::where('user_type', 'Employee')->get();
+
+        return view('Backend.Employee.Employee_attendance.edit', $data);
     }
 
     /**
