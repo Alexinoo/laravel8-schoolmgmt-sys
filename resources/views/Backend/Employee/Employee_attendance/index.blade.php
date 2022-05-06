@@ -36,7 +36,7 @@
 								<td>{{ date('d-m-Y',strtotime($attendance->date))}}</td>
                                 <td>
                                     <div class="text-center">
-                                    <a href="" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{route('employee_attendance.edit',$attendance->date)}}" class="btn btn-circle btn-info btn-xs"><i class="fa fa-pencil"></i></a>
 
                                     <a href="" class="btn btn-circle btn-danger btn-xs ml-3" id="delete"><i class="fa fa-trash"></i></a>
                                     </div>
