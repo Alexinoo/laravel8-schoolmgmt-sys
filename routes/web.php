@@ -283,11 +283,11 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('employee-attendance/store', [EmployeeAttendanceController::class, 'store'])->name('employee_attendance.store');
 
-        Route::get('employee-attendance/edit/{id}', [EmployeeAttendanceController::class, 'edit'])->name('employee_attendance.edit');
+        Route::get('employee-attendance/edit/{date}', [EmployeeAttendanceController::class, 'edit'])->name('employee_attendance.edit');
 
-        Route::post('employee-attendance/update/{id}', [EmployeeAttendanceController::class, 'update'])->name('employee_attendance.update');
+        Route::post('employee-attendance/update/{date}', [EmployeeAttendanceController::class, 'update'])->name('employee_attendance.update');
 
-        Route::get('employee-attendance/delete/{id}', [EmployeeAttendanceController::class, 'destroy'])->name('employee_attendance.delete');
+        Route::get('employee-attendance/delete/{date}', [EmployeeAttendanceController::class, 'destroy'])->name('employee_attendance.delete');
     });
 });
 
