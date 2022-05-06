@@ -48,6 +48,10 @@ class EmployeeAttendanceController extends Controller
         ]);
 
         DB::transaction(function () use ($request) {
+
+            // Delete existing
+            Employee_attendance::where('date',$request->date)->delete();
+
             // count employees
             $empCount = count($request->employee_id);
 
