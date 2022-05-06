@@ -285,9 +285,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('employee-attendance/edit/{date}', [EmployeeAttendanceController::class, 'edit'])->name('employee_attendance.edit');
 
-        Route::post('employee-attendance/update/{date}', [EmployeeAttendanceController::class, 'update'])->name('employee_attendance.update');
-
-        Route::get('employee-attendance/delete/{date}', [EmployeeAttendanceController::class, 'destroy'])->name('employee_attendance.delete');
+        Route::get('employee-attendance/show/{date}', [EmployeeAttendanceController::class, 'show'])->name('employee_attendance.show');
     });
 });
 
