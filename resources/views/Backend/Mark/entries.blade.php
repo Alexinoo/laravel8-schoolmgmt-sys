@@ -133,8 +133,6 @@
                 , data: {
                     year_id: $('#year_id').val()
                     , class_id: $('#class_id').val()
-                    , subject_id: $('#subject_id').val()
-                    , exam_type_id: $('#exam_type_id').val()
                 }
                 , success: function(response) {
 
@@ -154,7 +152,7 @@
                                 </tr>`;
                     });
                     html = $('#marks-entry-tr').html(html);
-
+                    ""
                 }
             });
     });
