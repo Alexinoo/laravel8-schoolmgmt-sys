@@ -162,6 +162,8 @@
                       <li class=" {{ ($route == 'marks_entry.edit') ? 'active': ''}}"><a href="{{ route('marks_entry.edit') }}"><i class="ti-more"></i>Update Entries</a></li>
 
 
+                      <li class=" {{ ($route == 'marks_grade.index') ? 'active': ''}}"><a href="{{ route('marks_grade.index') }}"><i class="ti-more"></i>Marks Grade</a></li>
+
                   </ul>
               </li>
 
