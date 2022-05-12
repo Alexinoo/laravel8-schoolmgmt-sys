@@ -122,11 +122,22 @@
 
                       <li><a href="{{ route('monthly_salary.index') }}"><i class="ti-more"></i>Monthly Salary</a></li>
 
+                  </ul>
+              </li>
 
-
+              <li class="treeview {{ ($prefix == '/marks') ? 'active': ''}}">
+                  <a href="#">
+                      <i data-feather="mail"></i> <span>Marks Management</span>
+                      <span class="pull-right-container">
+                          <i class="fa fa-angle-right pull-right"></i>
+                      </span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="{{ route('marks_entry.entries') }}"><i class="ti-more"></i>Marks Entry</a></li>
 
                   </ul>
               </li>
+
 
 
               <li class="header nav-small-cap">User Interface</li>
