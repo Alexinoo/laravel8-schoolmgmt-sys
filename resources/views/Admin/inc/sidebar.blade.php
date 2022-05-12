@@ -135,6 +135,8 @@
                   <ul class="treeview-menu">
                       <li><a href="{{ route('marks_entry.entries') }}"><i class="ti-more"></i>Marks Entry</a></li>
 
+                      <li><a href="{{ route('marks_entry.edit') }}"><i class="ti-more"></i>Update Entries</a></li>
+
                   </ul>
               </li>
 
