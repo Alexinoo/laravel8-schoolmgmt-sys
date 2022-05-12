@@ -69,16 +69,36 @@
                       </span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="{{ route('student_class.index') }}"><i class="ti-more"></i>Student class</a></li>
-                      <li><a href="{{ route('student_year.index') }}"><i class="ti-more"></i>Student year</a></li>
-                      <li><a href="{{ route('student_group.index') }}"><i class="ti-more"></i>Student group</a></li>
-                      <li><a href="{{ route('student_shift.index') }}"><i class="ti-more"></i>Student shift</a></li>
-                      <li><a href="{{ route('fee_category.index') }}"><i class="ti-more"></i>Fee Category</a></li>
-                      <li><a href="{{ route('fee_category_amount.index') }}"><i class="ti-more"></i>Fee Category Amount</a></li>
-                      <li><a href="{{ route('exam_type.index') }}"><i class="ti-more"></i>Exam type</a></li>
-                      <li><a href="{{ route('school_subject.index') }}"><i class="ti-more"></i>School Subject</a></li>
-                      <li><a href="{{ route('assign_subject.index') }}"><i class="ti-more"></i>Assign Subject</a></li>
-                      <li><a href="{{ route('designation.index') }}"><i class="ti-more"></i>Designation</a></li>
+                      <li class=" {{ ($route == 'student_class.index') ? 'active': ''}}"><a href="{{ route('student_class.index') }}"><i class="ti-more"></i>Student class</a></li>
+
+
+                      <li class=" {{ ($route == 'student_year.index') ? 'active': ''}}"><a href="{{ route('student_year.index') }}"><i class="ti-more"></i>Student year</a></li>
+
+
+                      <li class=" {{ ($route == 'student_group.index') ? 'active': ''}}"><a href="{{ route('student_group.index') }}"><i class="ti-more"></i>Student group</a></li>
+
+
+                      <li class=" {{ ($route == 'student_shift.index') ? 'active': ''}}"><a href="{{ route('student_shift.index') }}"><i class="ti-more"></i>Student shift</a></li>
+
+
+                      <li class=" {{ ($route == 'fee_category.index') ? 'active': ''}}"><a href="{{ route('fee_category.index') }}"><i class="ti-more"></i>Fee Category</a></li>
+
+
+                      <li class=" {{ ($route == 'fee_category_amount.index') ? 'active': ''}}"><a href="{{ route('fee_category_amount.index') }}"><i class="ti-more"></i>Fee Category Amount</a></li>
+
+
+                      <li class=" {{ ($route == 'exam_type.index') ? 'active': ''}}"><a href="{{ route('exam_type.index') }}"><i class="ti-more"></i>Exam type</a></li>
+
+
+                      <li class=" {{ ($route == 'school_subject.index') ? 'active': ''}}"><a href="{{ route('school_subject.index') }}"><i class="ti-more"></i>School Subject</a></li>
+
+
+                      <li class=" {{ ($route == 'assign_subject.index') ? 'active': ''}}"><a href="{{ route('assign_subject.index') }}"><i class="ti-more"></i>Assign Subject</a></li>
+
+
+                      <li class=" {{ ($route == 'designation.index') ? 'active': ''}}"><a href="{{ route('designation.index') }}"><i class="ti-more"></i>Designation</a></li>
+
+
 
                   </ul>
               </li>
@@ -92,13 +112,17 @@
                       </span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="{{ route('student_registration.index') }}"><i class="ti-more"></i>Student Registration</a></li>
-                      <li><a href="{{ route('generate_roll.index') }}"><i class="ti-more"></i>Roll Generate</a></li>
-                      <li><a href="{{ route('registration_fee.index') }}"><i class="ti-more"></i>Registration Fee</a></li>
 
-                      <li><a href="{{ route('monthly_fee.index') }}"><i class="ti-more"></i>Monthly Fee</a></li>
+                      <li class=" {{ ($route == 'student_registration.index') ? 'active': ''}}"><a href="{{ route('student_registration.index') }}"><i class="ti-more"></i>Student Registration</a></li>
 
-                      <li><a href="{{ route('exam_fee.index') }}"><i class="ti-more"></i>Exam Fee</a></li>
+
+                      <li class=" {{ ($route == 'generate_roll.index') ? 'active': ''}}"><a href="{{ route('generate_roll.index') }}"><i class="ti-more"></i>Roll Generate</a></li>
+
+                      <li class=" {{ ($route == 'registration_fee.index') ? 'active': ''}}"><a href="{{ route('registration_fee.index') }}"><i class="ti-more"></i>Registration Fee</a></li>
+
+                      <li class=" {{ ($route == 'monthly_fee.index') ? 'active': ''}}"><a href="{{ route('monthly_fee.index') }}"><i class="ti-more"></i>Monthly Fee</a></li>
+
+                      <li class=" {{ ($route == 'exam_fee.index') ? 'active': ''}}"><a href="{{ route('exam_fee.index') }}"><i class="ti-more"></i>Exam Fee</a></li>
 
                   </ul>
               </li>
@@ -112,15 +136,15 @@
                       </span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="{{ route('employee_registration.index') }}"><i class="ti-more"></i>Employee Registration</a></li>
+                      <li class=" {{ ($route == 'employee_registration.index') ? 'active': ''}}"><a href="{{ route('employee_registration.index') }}"><i class="ti-more"></i>Employee Registration</a></li>
 
-                      <li><a href="{{ route('employee_salary.index') }}"><i class="ti-more"></i>Employee Salary</a></li>
+                      <li class=" {{ ($route == 'employee_salary.index') ? 'active': ''}}"><a href="{{ route('employee_salary.index') }}"><i class="ti-more"></i>Employee Salary</a></li>
 
-                      <li><a href="{{ route('employee_leave.index') }}"><i class="ti-more"></i>Employee Leave</a></li>
+                      <li class=" {{ ($route == 'employee_leave.index') ? 'active': ''}}"><a href="{{ route('employee_leave.index') }}"><i class="ti-more"></i>Employee Leave</a></li>
 
-                      <li><a href="{{ route('employee_attendance.index') }}"><i class="ti-more"></i>Employee Attendance</a></li>
+                      <li class=" {{ ($route == 'employee_attendance.index') ? 'active': ''}}"><a href="{{ route('employee_attendance.index') }}"><i class="ti-more"></i>Employee Attendance</a></li>
 
-                      <li><a href="{{ route('monthly_salary.index') }}"><i class="ti-more"></i>Monthly Salary</a></li>
+                      <li class=" {{ ($route == 'monthly_salary.index') ? 'active': ''}}"><a href="{{ route('monthly_salary.index') }}"><i class="ti-more"></i>Monthly Salary</a></li>
 
                   </ul>
               </li>
@@ -134,8 +158,6 @@
                   </a>
                   <ul class="treeview-menu">
                       <li class=" {{ ($route == 'marks_entry.entries') ? 'active': ''}}"><a href="{{ route('marks_entry.entries') }}"><i class="ti-more"></i>Marks Entry</a></li>
-
-
 
                       <li class=" {{ ($route == 'marks_entry.edit') ? 'active': ''}}"><a href="{{ route('marks_entry.edit') }}"><i class="ti-more"></i>Update Entries</a></li>
 
