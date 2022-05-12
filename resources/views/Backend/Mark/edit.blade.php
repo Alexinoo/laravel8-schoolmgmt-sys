@@ -125,26 +125,22 @@
 <script type="text/javascript">
     $(document).on('click', '#search', function() {
 
-        let data =
+        $.ajax({
+            url: "{{ route('getStudentMarksForUpdate')}}"
+            , type: "GET"
+            , data: {
+                year_id: $('#year_id').val()
+                , class_id: $('#class_id').val()
+                , subject_id: $('#subject_id').val()
+                , exam_type_id: $('#exam_type_id').val()
+            }
+            , success: function(response) {
 
-            $.ajax({
-                url: "{{ route('getStudentMarksForUpdate')}}"
+                $('#marks-entry').removeClass('d-none');
 
-
-                , type: "GET"
-                , data: {
-                    year_id: $('#year_id').val()
-                    , class_id: $('#class_id').val()
-                    , subject_id: $('#subject_id').val()
-                    , exam_type_id: $('#exam_type_id').val()
-                }
-                , success: function(response) {
-
-                    $('#marks-entry').removeClass('d-none');
-
-                    var html = '';
-                    $.each(response, function(key, value) {
-                        html += `<tr>
+                var html = '';
+                $.each(response, function(key, value) {
+                    html += `<tr>
                                 <td>${value.user.id_no}
                                     <input type="hidden" name="student_id[]" value="${value.student_id}" />
                                     <input type="hidden" name="id_no[]" value="${value.user.id_no}" />
@@ -155,10 +151,10 @@
                                 <td><input type="text" class="form-control form-control-sm" name="marks[]" value="${value.marks}"></td>
 
                                 </tr>`;
-                    });
-                    $('#marks-entry-tr').html(html);
-                }
-            });
+                });
+                $('#marks-entry-tr').html(html);
+            }
+        });
     });
 
 </script>
