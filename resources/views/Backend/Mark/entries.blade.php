@@ -17,7 +17,7 @@
                         </div>
 
                         <div class="box-body">
-                            <form action="{{ route('generate_roll.store') }}" method="post">
+                            <form action="{{ route('marks_entry.store') }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-3">
@@ -73,7 +73,7 @@
                                     </div>
 
 
-                                    <div class="col-md-3" style="padding-top:25px;">
+                                    <div class="col-md-3" style="padding-top:25px; margin-bottom:10px">
                                         <a id="search" class="btn btn-primary" name="search">Search</a>
                                     </div>
                                 </div>
@@ -97,6 +97,8 @@
 
                                             </tbody>
                                         </table>
+                                        <input type="submit" value="Submit" class="btn btn-rounded btn-primary">
+
                                     </div>
                                 </div>
                             </form>
