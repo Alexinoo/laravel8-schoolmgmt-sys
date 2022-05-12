@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
+use App\Http\Controllers\Backend\Mark\GradeController;
 use App\Http\Controllers\Backend\Mark\MarkController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
@@ -308,13 +309,24 @@ Route::group(['middleware' => 'auth'], function () {
         Route::prefix('marks')->group(function () {
 
 
+        // Marks Entry
         Route::get('marks-entry/entries', [MarkController::class, 'entries'])->name('marks_entry.entries');
 
         Route::post('marks-entry/store', [MarkController::class, 'store'])->name('marks_entry.store');
 
         Route::get('marks-entry/edit', [MarkController::class, 'edit'])->name('marks_entry.edit');
 
+        // Marks Update entries
         Route::post('marks-entry/update', [MarkController::class, 'update'])->name('marks_entry.update');
+
+
+
+        // Marks Grade
+        Route::get('marks-grade/index', [GradeController::class, 'index'])->name('marks_grade.index');
+        Route::get('marks-grade/create', [GradeController::class, 'create'])->name('marks_grade.create');
+        Route::post('marks-grade/store', [GradeController::class, 'store'])->name('marks_grade.store');
+        Route::get('marks-grade/edit/{id}', [GradeController::class, 'edit'])->name('marks_grade.edit');
+        Route::post('marks-grade/update/{id}', [GradeController::class, 'update'])->name('marks_grade.update');
 
         });
 
