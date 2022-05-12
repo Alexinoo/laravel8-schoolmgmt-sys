@@ -310,6 +310,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('marks-entry/entries', [MarkController::class, 'entries'])->name('marks_entry.entries');
 
+        Route::post('marks-entry/store', [MarkController::class, 'store'])->name('marks_entry.store');
+
         });
 
       
