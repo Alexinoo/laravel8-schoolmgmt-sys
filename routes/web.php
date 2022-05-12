@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Backend\DefaultController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
 use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
+use App\Http\Controllers\Backend\Mark\MarkController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
@@ -300,6 +302,32 @@ Route::group(['middleware' => 'auth'], function () {
         // Get Employee Monthly Salary Payslip
         Route::get('monthly-salary/pay-slip/{emp_id}', [MonthlySalaryController::class, 'EmpMonthlySalPayslip'])->name('monthly_salary_payslip');
     });
+
+
+        // Marks Management
+        Route::prefix('marks')->group(function () {
+
+
+        Route::get('marks-entry/entries', [MarkController::class, 'entries'])->name('marks_entry.entries');
+
+        });
+
+      
+
+
+
+
+
+
+
+
+
+
+    // Default Controller
+
+    Route::get('marks/fetch-subjects', [DefaultController::class, 'fetchSubjects'])->name('fetchSubjects');
+    
+    Route::get('marks/get-student-marks', [DefaultController::class, 'getStudentMarks'])->name('getStudentMarks');
 });
 
 // End Auth middleware 
