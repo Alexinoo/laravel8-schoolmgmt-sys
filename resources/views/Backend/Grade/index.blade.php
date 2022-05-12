@@ -42,7 +42,7 @@
                                             <td>{{ $value->grade_name}}</td>
                                             <td>{{ $value->start_marks}}</td>
                                             <td>{{ $value->end_marks}}</td>
-                                            <td>{{ $value->start_marks}} - {{ $value->end_marks}}</td>
+                                            <td>{{ $value->start_point}} - {{ $value->end_point}}</td>
                                             <td>{{ $value->remarks}}</td>
                                             <td>
                                                 <div class="text-center">
