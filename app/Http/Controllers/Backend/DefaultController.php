@@ -37,7 +37,7 @@ class DefaultController extends Controller
 
 
     // Get student marks Previously stored for update
-    public function UpdateStudentMarks(Request $request){
+    public function getStudentMarksForUpdate(Request $request){
 
         $year_id = $request->year_id;
         $class_id = $request->class_id;
