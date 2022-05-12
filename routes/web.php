@@ -312,6 +312,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::post('marks-entry/store', [MarkController::class, 'store'])->name('marks_entry.store');
 
+        Route::get('marks-entry/edit', [MarkController::class, 'edit'])->name('marks_entry.edit');
+
+        Route::post('marks-entry/update', [MarkController::class, 'update'])->name('marks_entry.update');
+
         });
 
       
@@ -330,6 +334,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('marks/fetch-subjects', [DefaultController::class, 'fetchSubjects'])->name('fetchSubjects');
     
     Route::get('marks/get-student-marks', [DefaultController::class, 'getStudentMarks'])->name('getStudentMarks');
+
+    Route::get('marks/get-student-marks-for-update', [DefaultController::class, 'getStudentMarksForUpdate'])->name('getStudentMarksForUpdate');
 });
 
 // End Auth middleware 
