@@ -133,9 +133,12 @@
                       </span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="{{ route('marks_entry.entries') }}"><i class="ti-more"></i>Marks Entry</a></li>
+                      <li class=" {{ ($route == 'marks_entry.entries') ? 'active': ''}}"><a href="{{ route('marks_entry.entries') }}"><i class="ti-more"></i>Marks Entry</a></li>
 
-                      <li><a href="{{ route('marks_entry.edit') }}"><i class="ti-more"></i>Update Entries</a></li>
+
+
+                      <li class=" {{ ($route == 'marks_entry.edit') ? 'active': ''}}"><a href="{{ route('marks_entry.edit') }}"><i class="ti-more"></i>Update Entries</a></li>
+
 
                   </ul>
               </li>
