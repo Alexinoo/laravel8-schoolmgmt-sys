@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Backend\Employee\EmployeeLeaveController;
 use App\Http\Controllers\Backend\Employee\EmployeeAttendanceController;
+use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
@@ -53,7 +54,7 @@ Route::middleware([
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 
-// Group Middleware
+// Group Middleware - for all routes - Need to be Authenticated first
 Route::group(['middleware' => 'auth'], function () {
 
     // User Management
@@ -286,6 +287,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('employee-attendance/edit/{date}', [EmployeeAttendanceController::class, 'edit'])->name('employee_attendance.edit');
 
         Route::get('employee-attendance/show/{date}', [EmployeeAttendanceController::class, 'show'])->name('employee_attendance.show');
+
+        
+
+
+        // Monthly Salary
+        Route::get('monthly-salary/index', [MonthlySalaryController::class, 'index'])->name('monthly_salary.index');
+
+        // Get Employee Monthly Salary 
+        Route::get('monthly-salary/attendance-wise', [MonthlySalaryController::class, 'fetchEmpMonthlySal'])->name('fetchEmpMonthlySal');
+
+        // Get Employee Monthly Salary Payslip
+        Route::get('monthly-salary/pay-slip/{emp_id}', [MonthlySalaryController::class, 'EmpMonthlySalPayslip'])->name('monthly_salary_payslip');
     });
 });
 
