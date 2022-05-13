@@ -40,8 +40,8 @@
                       </span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="{{ route('view.users')}}"><i class="ti-more"></i> Users</a></li>
-                      <li><a href="{{route('add.user')}}"><i class="ti-more"></i>Add User</a></li>
+                      <li class=" {{ ($route == 'view.users') ? 'active': ''}}"><a href="{{ route('view.users')}}"><i class="ti-more"></i> Users</a></li>
+                      <li class=" {{ ($route == 'add.user') ? 'active': ''}}"><a href="{{route('add.user')}}"><i class="ti-more"></i>Add User</a></li>
                   </ul>
               </li>
               @endif
@@ -55,8 +55,12 @@
                       </span>
                   </a>
                   <ul class="treeview-menu">
-                      <li><a href="{{ route('view.profile') }}"><i class="ti-more"></i>Your Profile</a></li>
-                      <li><a href="{{ route('view.password') }}"><i class="ti-more"></i>Change Password</a></li>
+                      <li class=" {{ ($route == 'view.profile') ? 'active': ''}}"><a href="{{ route('view.profile') }}"><i class="ti-more"></i>Your Profile</a></li>
+
+
+                      <li class=" {{ ($route == 'view.password') ? 'active': ''}}"><a href="{{ route('view.password') }}"><i class="ti-more"></i>Change Password</a></li>
+
+
                   </ul>
               </li>
 
@@ -166,6 +170,24 @@
 
                   </ul>
               </li>
+
+              <li class="treeview {{ ($prefix == '/accounts') ? 'active': ''}}">
+                  <a href="#">
+                      <i data-feather="mail"></i> <span>Accounts Management</span>
+                      <span class="pull-right-container">
+                          <i class="fa fa-angle-right pull-right"></i>
+                      </span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li class=" {{ ($route == 'student_fee.index') ? 'active': ''}}"><a href="{{ route('student_fee.index') }}"><i class="ti-more"></i>Student Fee</a></li>
+
+
+
+
+                  </ul>
+              </li>
+
+
 
 
 
