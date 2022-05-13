@@ -48,7 +48,7 @@ class Student_feeController extends Controller
                 $model->year_id = $request->year_id;
                 $model->class_id = $request->class_id;
                 $model->fee_category_id = $request->fee_category_id;
-                $model->date = $request->date;
+                $model->date = $date;
                 $model->student_id = $request->student_id[$checkedData[$i] ];
                 $model->amount = $request->amount[$checkedData[$i]];
                 $model->save();
