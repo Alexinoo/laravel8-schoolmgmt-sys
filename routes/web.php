@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Backend\Account\Student_feeController;
 use App\Http\Controllers\Backend\DefaultController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
 use App\Http\Controllers\Backend\Employee\EmployeeSalaryController;
@@ -330,6 +331,19 @@ Route::group(['middleware' => 'auth'], function () {
 
         });
 
+    // Accounts Management
+    Route::prefix('accounts')->group(function () {
+
+
+        // Accounts - Student Fee
+        Route::get('accounts/student-fee', [Student_feeController::class, 'index'])->name('student_fee.index');
+        Route::get('accounts/student-fee/create', [Student_feeController::class, 'create'])->name('student_fee.create');
+        Route::post('accounts/student-fee/store', [Student_feeController::class, 'store'])->name('student_fee.store');
+        Route::get('accounts/student-fee/edit/{id}', [Student_feeController::class, 'edit'])->name('student_fee.edit');
+
+      
+    });
+
       
 
 
@@ -348,6 +362,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('marks/get-student-marks', [DefaultController::class, 'getStudentMarks'])->name('getStudentMarks');
 
     Route::get('marks/get-student-marks-for-update', [DefaultController::class, 'getStudentMarksForUpdate'])->name('getStudentMarksForUpdate');
+
+
+    Route::get('accounts/get-acc-student-fees', [DefaultController::class, 'fetchStudAccFees'])->name('fetchStudAccFees');
+
+    
 });
 
 // End Auth middleware 
