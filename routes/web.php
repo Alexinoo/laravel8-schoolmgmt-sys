@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Backend\Account\Salary_accountController;
 use App\Http\Controllers\Backend\Account\Student_feeController;
 use App\Http\Controllers\Backend\DefaultController;
 use App\Http\Controllers\Backend\Employee\EmployeeRegistrationController;
@@ -340,6 +341,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('accounts/student-fee/create', [Student_feeController::class, 'create'])->name('student_fee.create');
         Route::post('accounts/student-fee/store', [Student_feeController::class, 'store'])->name('student_fee.store');
         Route::get('accounts/student-fee/edit/{id}', [Student_feeController::class, 'edit'])->name('student_fee.edit');
+
+
+        // Accounts - Employee Salaries
+       
+        Route::get('salaries/emp-sal', [Salary_accountController::class, 'index'])->name('salaries.index');
+        Route::get('salaries/emp-sal/create', [Salary_accountController::class, 'create'])->name('salaries.create');
+        Route::post('salaries/emp-sal/store', [Salary_accountController::class, 'store'])->name('salaries.store');
+        Route::get('salaries/emp-sal/edit/{id}', [Salary_accountController::class, 'edit'])->name('salaries.edit');
+
+        // Fetch Employee salaries
+        Route::get('salaries/fetch-emp-sal', [Salary_accountController::class, 'fetchEmpSalaries'])->name('fetchEmpSalaries');
 
       
     });
