@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
 use App\Http\Controllers\Backend\Mark\GradeController;
 use App\Http\Controllers\Backend\Mark\MarkController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Report\ProfitController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
@@ -364,32 +365,37 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('other-costs/edit/{id}', [Other_costController::class, 'edit'])->name('other_cost.edit');
         Route::post('other-costs/update/{id}', [Other_costController::class, 'update'])->name('other_cost.update');
         Route::get('other-costs/delete/{id}', [Other_costController::class, 'destroy'])->name('other_cost.delete');
-
-
-      
-    });
-
-      
+      });
 
 
 
+            // REPORTS Module
+
+            // Reports Management
+            Route::prefix('reports')->group(function () {
+
+            // Monthly Profit
+            Route::get('monthly-profit/index', [ProfitController::class, 'index'])->name('monthly-profit.index');
+
+            Route::get('monthly-profit/datewise', [ProfitController::class, 'GetProfitReportDatewise'])->name('GetProfitReportDatewise');
+
+            Route::get('monthly-profit/pdf', [ProfitController::class, 'export_pdf'])->name('profit_report_pdf');
+            });
 
 
 
 
 
+        // Default Controller
+
+        Route::get('marks/fetch-subjects', [DefaultController::class, 'fetchSubjects'])->name('fetchSubjects');
+        
+        Route::get('marks/get-student-marks', [DefaultController::class, 'getStudentMarks'])->name('getStudentMarks');
+
+        Route::get('marks/get-student-marks-for-update', [DefaultController::class, 'getStudentMarksForUpdate'])->name('getStudentMarksForUpdate');
 
 
-    // Default Controller
-
-    Route::get('marks/fetch-subjects', [DefaultController::class, 'fetchSubjects'])->name('fetchSubjects');
-    
-    Route::get('marks/get-student-marks', [DefaultController::class, 'getStudentMarks'])->name('getStudentMarks');
-
-    Route::get('marks/get-student-marks-for-update', [DefaultController::class, 'getStudentMarksForUpdate'])->name('getStudentMarksForUpdate');
-
-
-    Route::get('accounts/get-acc-student-fees', [DefaultController::class, 'fetchStudAccFees'])->name('fetchStudAccFees');
+        Route::get('accounts/get-acc-student-fees', [DefaultController::class, 'fetchStudAccFees'])->name('fetchStudAccFees');
 
     
 });
