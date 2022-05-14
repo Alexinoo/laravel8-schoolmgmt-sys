@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Backend\Account\Other_costController;
 use App\Http\Controllers\Backend\Account\Salary_accountController;
 use App\Http\Controllers\Backend\Account\Student_feeController;
 use App\Http\Controllers\Backend\DefaultController;
@@ -352,6 +353,18 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Fetch Employee salaries
         Route::get('salaries/fetch-emp-sal', [Salary_accountController::class, 'fetchEmpSalaries'])->name('fetchEmpSalaries');
+
+
+
+
+        // Other costs
+        Route::get('other-costs/index', [Other_costController::class, 'index'])->name('other_cost.index');
+        Route::get('other-costs/create', [Other_costController::class, 'create'])->name('other_cost.create');
+        Route::post('other-costs/store', [Other_costController::class, 'store'])->name('other_cost.store');
+        Route::get('other-costs/edit/{id}', [Other_costController::class, 'edit'])->name('other_cost.edit');
+        Route::post('other-costs/update/{id}', [Other_costController::class, 'update'])->name('other_cost.update');
+        Route::get('other-costs/delete/{id}', [Other_costController::class, 'destroy'])->name('other_cost.delete');
+
 
       
     });
