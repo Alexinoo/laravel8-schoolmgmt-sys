@@ -183,8 +183,7 @@
 
                       <li class=" {{ ($route == 'salaries.index') ? 'active': ''}}"><a href="{{ route('salaries.index') }}"><i class="ti-more"></i>Employee Salaries</a></li>
 
-
-
+                      <li class=" {{ ($route == 'other_cost.index') ? 'active': ''}}"><a href="{{ route('other_cost.index') }}"><i class="ti-more"></i>Other Costs</a></li>
 
                   </ul>
               </li>
