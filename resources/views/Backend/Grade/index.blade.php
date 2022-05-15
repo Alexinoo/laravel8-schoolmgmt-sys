@@ -27,6 +27,7 @@
                                         <tr>
                                             <th width="5%">ID</th>
                                             <th>Grade</th>
+                                            <th>Point</th>
                                             <th>Start Mark</th>
                                             <th>End Mark</th>
                                             <th>Point Range</th>
@@ -40,6 +41,7 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{ $value->grade_name}}</td>
+                                            <td>{{ number_format( (float)$value->grade_point, 2 )}}</td>
                                             <td>{{ $value->start_marks}}</td>
                                             <td>{{ $value->end_marks}}</td>
                                             <td>{{ $value->start_point}} - {{ $value->end_point}}</td>
