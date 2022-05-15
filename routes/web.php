@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
 use App\Http\Controllers\Backend\Mark\GradeController;
 use App\Http\Controllers\Backend\Mark\MarkController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Report\AttendanceReportController;
 use App\Http\Controllers\Backend\Report\MarksheetController;
 use App\Http\Controllers\Backend\Report\ProfitController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
@@ -383,10 +384,21 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('monthly-profit/pdf', [ProfitController::class, 'export_pdf'])->name('profit_report_pdf');
             });
 
-        // Generate Marksheet Routes
+        
+        
+            // Generate Marksheet Routes
         
         Route::get('generate-marksheet/index', [MarksheetController::class, 'index'])->name('generate_marksheet.index');
         Route::get('generate-marksheet/get', [MarksheetController::class, 'GetMarksheet'])->name('generate_marksheet.get');
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Attendance
+        Route::get('attendance-report/index', [AttendanceReportController::class, 'index'])->name('attendance_report.index');
+
+        Route::get('attendance-report/get', [AttendanceReportController::class, 'GetAttendanceReport'])->name('attendance_report.get');
 
 
 
