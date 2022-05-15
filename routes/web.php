@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\Mark\GradeController;
 use App\Http\Controllers\Backend\Mark\MarkController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Report\AttendanceReportController;
+use App\Http\Controllers\Backend\Report\IdCardController;
 use App\Http\Controllers\Backend\Report\MarksheetController;
 use App\Http\Controllers\Backend\Report\ProfitController;
 use App\Http\Controllers\Backend\Report\StudentPerfomanceController;
@@ -408,6 +409,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('student-perfomance/index', [StudentPerfomanceController::class, 'index'])->name('student_perfomance.index'); 
 
         Route::get('student-perfomance/StudentPerfomance', [StudentPerfomanceController::class, 'GetStudentPerfomanceReport'])->name('student_perfomance.get');
+
+
+       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        // Student ID Card
+        Route::get('student-ID/index', [IdCardController::class, 'index'])->name('student_ID.index');
+
+        Route::get('student-ID/ID Card', [IdCardController::class, 'GetStudentIDCard'])->name('student_ID.get');
+
 
 
     });
