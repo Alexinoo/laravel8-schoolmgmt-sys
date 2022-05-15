@@ -202,6 +202,8 @@
 
                       <li class=" {{ ($route == 'generate_marksheet.index') ? 'active': ''}}"><a href="{{ route('generate_marksheet.index') }}"><i class="ti-more"></i>Generate Marksheet</a></li>
 
+                      <li class=" {{ ($route == 'attendance_report.index') ? 'active': ''}}"><a href="{{ route('attendance_report.index') }}"><i class="ti-more"></i>Attendance </a></li>
+
 
                   </ul>
               </li>
