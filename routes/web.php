@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Report\AttendanceReportController;
 use App\Http\Controllers\Backend\Report\MarksheetController;
 use App\Http\Controllers\Backend\Report\ProfitController;
+use App\Http\Controllers\Backend\Report\StudentPerfomanceController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
@@ -382,7 +383,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('monthly-profit/datewise', [ProfitController::class, 'GetProfitReportDatewise'])->name('GetProfitReportDatewise');
 
             Route::get('monthly-profit/pdf', [ProfitController::class, 'export_pdf'])->name('profit_report_pdf');
-            });
 
         
         
@@ -395,13 +395,22 @@ Route::group(['middleware' => 'auth'], function () {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        // Attendance
+        // Attendance Report
         Route::get('attendance-report/index', [AttendanceReportController::class, 'index'])->name('attendance_report.index');
 
-        Route::get('attendance-report/get', [AttendanceReportController::class, 'GetAttendanceReport'])->name('attendance_report.get');
+        Route::get('attendance-report/AttendanceReport', [AttendanceReportController::class, 'GetAttendanceReport'])->name('attendance_report.get');
 
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+        // Student Perfomance Report
+        Route::get('student-perfomance/index', [StudentPerfomanceController::class, 'index'])->name('student_perfomance.index'); 
+
+        Route::get('student-perfomance/StudentPerfomance', [StudentPerfomanceController::class, 'GetStudentPerfomanceReport'])->name('student_perfomance.get');
+
+
+    });
 
 
         // Default Controller
