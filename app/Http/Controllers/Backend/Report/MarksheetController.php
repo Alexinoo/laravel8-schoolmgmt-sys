@@ -39,7 +39,7 @@ class MarksheetController extends Controller
 
            $grades = Mark_grade::all();
 
-           return view('Backend.Report.Marksheet.marksheet_pdf',compact('allMarks', 'grades','countFail'));
+           return view('Backend.Report.Marksheet.marksheet_pdf',compact('allMarks','grades','countFail'));
 
             }else{
 
