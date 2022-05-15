@@ -200,6 +200,9 @@
                   <ul class="treeview-menu">
                       <li class=" {{ ($route == 'monthly-profit.index') ? 'active': ''}}"><a href="{{ route('monthly-profit.index') }}"><i class="ti-more"></i>Monthly / Yearly Profit</a></li>
 
+                      <li class=" {{ ($route == 'generate_marksheet.index') ? 'active': ''}}"><a href="{{ route('generate_marksheet.index') }}"><i class="ti-more"></i>Generate Marksheet</a></li>
+
+
                   </ul>
               </li>
 
