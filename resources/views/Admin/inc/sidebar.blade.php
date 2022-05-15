@@ -192,7 +192,7 @@
 
               <li class="treeview {{ ($prefix == '/reports') ? 'active': ''}}">
                   <a href="#">
-                      <i data-feather="mail"></i> <span>Reports Management</span>
+                      <i data-feather="server"></i> <span>Reports Management</span>
                       <span class="pull-right-container">
                           <i class="fa fa-angle-right pull-right"></i>
                       </span>
@@ -205,6 +205,8 @@
                       <li class=" {{ ($route == 'attendance_report.index') ? 'active': ''}}"><a href="{{ route('attendance_report.index') }}"><i class="ti-more"></i>Attendance </a></li>
 
                       <li class=" {{ ($route == 'student_perfomance.index') ? 'active': ''}}"><a href="{{ route('student_perfomance.index') }}"><i class="ti-more"></i>Students Perfomance </a></li>
+
+                      <li class=" {{ ($route == 'student_ID.index') ? 'active': ''}}"><a href="{{ route('student_ID.index') }}"><i class="ti-more"></i>Student ID Card </a></li>
 
 
                   </ul>
